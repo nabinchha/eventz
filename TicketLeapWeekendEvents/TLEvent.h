@@ -41,4 +41,6 @@
 
 @property (strong, nonatomic) NSString *url;
 
+@property (strong, nonatomic) UIImage *imageCache;
+
 @end

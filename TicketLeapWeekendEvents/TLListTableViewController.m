@@ -82,12 +82,18 @@
     
     if(![eventOfInterest.image_url_small isKindOfClass:[NSNull class]])
     {
-        NSURL *imgUrl = [[NSURL alloc] initWithString:eventOfInterest.image_url_search];
-        NSData *imgData = [[NSData alloc] initWithContentsOfURL:imgUrl];
-        UIImage *img = [[UIImage alloc] initWithData:imgData];
-        
-        cell.eventImage.image = img;//[UIImage imageNamed:@"mapIcon@2x.png"];
+        if(eventOfInterest.imageCache == nil)
+        {
+            NSURL *imgUrl = [[NSURL alloc] initWithString:eventOfInterest.image_url_search];
+            NSData *imgData = [[NSData alloc] initWithContentsOfURL:imgUrl];
+            UIImage *img = [[UIImage alloc] initWithData:imgData];
+            //cell.eventImage.image = img;
+            eventOfInterest.imageCache = img;
+        }
+        cell.eventImage.image = eventOfInterest.imageCache;//[UIImage imageNamed:@"mapIcon@2x.png"];
     }
+    else
+        cell.eventImage.image = [[UIImage alloc] init];
     return cell;
 }
 

@@ -33,6 +33,7 @@
 		C5C32F3D193028B800111A6B /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C32F3C193028B800111A6B /* MBProgressHUD.m */; };
 		C5C32F4019302A9300111A6B /* TLTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C32F3F19302A9300111A6B /* TLTableViewCell.m */; };
 		C5F47FD819304AED005389B5 /* ticketLeapLogo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C5F47FD719304AED005389B5 /* ticketLeapLogo.jpg */; };
+		C5F47FDA19305134005389B5 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C5F47FD919305134005389B5 /* Logo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C5C32EE5192FEF8900111A6B /* TicketLeapWeekendEvents.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicketLeapWeekendEvents.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5C32EE5192FEF8900111A6B /* Eventz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eventz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5C32EE8192FEF8900111A6B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C5C32EEA192FEF8900111A6B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C5C32EEC192FEF8900111A6B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -84,6 +85,7 @@
 		C5C32F3E19302A9300111A6B /* TLTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLTableViewCell.h; sourceTree = "<group>"; };
 		C5C32F3F19302A9300111A6B /* TLTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLTableViewCell.m; sourceTree = "<group>"; };
 		C5F47FD719304AED005389B5 /* ticketLeapLogo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ticketLeapLogo.jpg; sourceTree = "<group>"; };
+		C5F47FD919305134005389B5 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,7 +127,7 @@
 		C5C32EE6192FEF8900111A6B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C5C32EE5192FEF8900111A6B /* TicketLeapWeekendEvents.app */,
+				C5C32EE5192FEF8900111A6B /* Eventz.app */,
 				C5C32F06192FEF8900111A6B /* TicketLeapWeekendEventsTests.xctest */,
 			);
 			name = Products;
@@ -158,6 +160,7 @@
 		C5C32EEF192FEF8900111A6B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C5F47FD919305134005389B5 /* Logo.png */,
 				C5C32F371930210400111A6B /* mapIcon@2x.png */,
 				C5C32F381930210400111A6B /* listIcon@2x.png */,
 				C5F47FD719304AED005389B5 /* ticketLeapLogo.jpg */,
@@ -245,7 +248,7 @@
 			);
 			name = TicketLeapWeekendEvents;
 			productName = TicketLeapWeekendEvents;
-			productReference = C5C32EE5192FEF8900111A6B /* TicketLeapWeekendEvents.app */;
+			productReference = C5C32EE5192FEF8900111A6B /* Eventz.app */;
 			productType = "com.apple.product-type.application";
 		};
 		C5C32F05192FEF8900111A6B /* TicketLeapWeekendEventsTests */ = {
@@ -276,6 +279,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = TestApp;
 				TargetAttributes = {
+					C5C32EE4192FEF8900111A6B = {
+						DevelopmentTeam = X9295U7NNQ;
+					};
 					C5C32F05192FEF8900111A6B = {
 						TestTargetID = C5C32EE4192FEF8900111A6B;
 					};
@@ -306,6 +312,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5C32F391930210400111A6B /* mapIcon@2x.png in Resources */,
+				C5F47FDA19305134005389B5 /* Logo.png in Resources */,
 				C5C32F3A1930210400111A6B /* listIcon@2x.png in Resources */,
 				C5C32F01192FEF8900111A6B /* Images.xcassets in Resources */,
 				C5C32EF3192FEF8900111A6B /* InfoPlist.strings in Resources */,
@@ -422,6 +429,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = Eventz;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -453,6 +461,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				PRODUCT_NAME = Eventz;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -463,10 +472,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TicketLeapWeekendEvents/TicketLeapWeekendEvents-Prefix.pch";
 				INFOPLIST_FILE = "TicketLeapWeekendEvents/TicketLeapWeekendEvents-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Eventz;
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -476,10 +488,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TicketLeapWeekendEvents/TicketLeapWeekendEvents-Prefix.pch";
 				INFOPLIST_FILE = "TicketLeapWeekendEvents/TicketLeapWeekendEvents-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Eventz;
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -39,6 +39,7 @@
 @synthesize venue_street = _venue_street;
 @synthesize venue_timezone = _venue_timezone;
 
+@synthesize imageCache = _imageCache;
 
 -(id) init
 {
