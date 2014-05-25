@@ -12,7 +12,13 @@
 
 +(void) displayAlertWithMessage:(NSString*) mymessage andHeading:(NSString*) myheading;
 
++(UIImage*) getImageFromURL:(NSString*)imageURL;
+
 + (UIImage*)resizeImage:(UIImage*)image
            scaledToSize:(CGSize)newSize;
+
++(NSString*) getWeekendStartDate;
+
++(NSString*) getWeekendStopDate;
 
 @end

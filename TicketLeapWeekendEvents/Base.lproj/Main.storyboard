@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Ou5-Zy-nHx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Ou5-Zy-nHx">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -57,10 +57,56 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="List" image="listIcon.png" id="Ne3-hI-UgA"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="elB-lp-i6f" kind="push" identifier="detailViewDemanded" id="cjr-g2-qL9"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1s3-m8-bQd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1135" y="69"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="s1r-IH-ZUg">
+            <objects>
+                <viewController id="elB-lp-i6f" customClass="TLDetailViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EC6-cp-Qlz">
+                        <rect key="frame" x="0.0" y="44" width="320" height="475"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SOW-sh-Kjr">
+                                <rect key="frame" x="8" y="12" width="305" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="18"/>
+                                <color key="textColor" red="0.87843143940000001" green="0.1960784495" blue="0.41960787770000002" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="JCb-0f-mEy">
+                                <rect key="frame" x="8" y="49" width="305" height="148"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="0.87843143940000001" green="0.1960784495" blue="0.41960787770000002" alpha="1" colorSpace="deviceRGB"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Description" selectable="NO" id="rYu-1y-r5A">
+                                <rect key="frame" x="8" y="205" width="305" height="265"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationItem key="navigationItem" id="7r1-hu-imj"/>
+                    <connections>
+                        <outlet property="eventDescription" destination="rYu-1y-r5A" id="29f-bX-bhc"/>
+                        <outlet property="eventImage" destination="JCb-0f-mEy" id="9Ka-SR-Sp1"/>
+                        <outlet property="eventName" destination="SOW-sh-Kjr" id="x7n-6N-ce9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="34C-zB-93n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1558" y="69"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="M8Y-WT-QRk">
@@ -148,10 +194,10 @@
             </objects>
             <point key="canvasLocation" x="633" y="446"/>
         </scene>
-        <!--View Controller - Map-->
+        <!--Map View Controller - Map-->
         <scene sceneID="Zhw-3y-8Av">
             <objects>
-                <viewController id="GpQ-rF-yCj" sceneMemberID="viewController">
+                <viewController id="GpQ-rF-yCj" customClass="TLMapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="z7z-PI-tgL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -165,6 +211,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="mapIcon.png" id="WA2-uD-dTR"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="mapView" destination="Gcq-l9-HBl" id="6bt-ET-RYE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="etW-kS-4yc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

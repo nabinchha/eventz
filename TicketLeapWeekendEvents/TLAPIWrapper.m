@@ -8,6 +8,7 @@
 
 #import "TLAPIWrapper.h"
 #import "TLEvent.h"
+#import "TLUtility.h"
 
 @implementation TLAPIWrapper
 
@@ -21,9 +22,14 @@
     return @"7238517239089673";
 }
 
-+(NSURL*) getURLToGetEventsByLocationUsingCountryCode:(NSString*)countryCode withState:(NSString*)state withCity:(NSString*)city
++(NSURL*) getURLToGetEventsByLocationUsingCountryCode:(NSString*)countryCode
+                                            withState:(NSString*)state
+                                             withCity:(NSString*)city
+                                       eventDateAfter:(NSString*) dateAfter
+                                      eventDateBefore:(NSString*) dateBefore
+                                               inPage:(int) pageNo
 {
-    NSString *myRelativeUrl = [NSString stringWithFormat:@"events/by/location/%@/%@/%@?key=%@", countryCode, state, city, [self getAPIKey]];
+    NSString *myRelativeUrl = [NSString stringWithFormat:@"events/by/location/%@/%@/%@?key=%@&dates_after=%@&dates_before=%@&page_num=%i", countryCode, state, city, [self getAPIKey], dateAfter, dateBefore, pageNo];
     myRelativeUrl = [myRelativeUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     NSURL *baseURL = [NSURL URLWithString:[self getURLBase]];
@@ -53,7 +59,7 @@
     //return [[NSString alloc] initWithData:urlData encoding:NSUTF8StringEncoding];
 }
 
-+ (NSArray *) getEventsFromJSON:(NSData *)objectNotation
++ (NSMutableArray *) getEventsFromJSON:(NSData *)objectNotation
 {
     NSError *localError = nil;
     NSDictionary *parsedObject = [NSJSONSerialization JSONObjectWithData:objectNotation options:0 error:&localError];
@@ -85,9 +91,15 @@
     return events;
 }
 
-+(NSArray*) searchByLocationInState:(NSString*) state inCity:(NSString*)city
++(NSArray*) searchByLocationInState:(NSString*) state
+                             inCity:(NSString*)city
+                           inPageNo:(int)pageNo
 {
-    NSURL *url = [self getURLToGetEventsByLocationUsingCountryCode:@"USA" withState:state withCity:city];
+    NSString *startDate = [TLUtility getWeekendStartDate];
+    NSString *stopDate = [TLUtility getWeekendStopDate];
+    
+    NSURL *url = [self getURLToGetEventsByLocationUsingCountryCode:@"USA" withState:state withCity:city eventDateAfter:startDate eventDateBefore:stopDate inPage:pageNo];
+    
     NSData *responseData = [self executeRequestWithURL:url];
     
     NSArray *events = [self getEventsFromJSON:responseData];

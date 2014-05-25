@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C53428C9193224350003F1D0 /* TLDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C53428C8193224350003F1D0 /* TLDetailViewController.m */; };
+		C53428CC19322F180003F1D0 /* TLMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C53428CB19322F180003F1D0 /* TLMapViewController.m */; };
 		C5C32EE9192FEF8900111A6B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5C32EE8192FEF8900111A6B /* Foundation.framework */; };
 		C5C32EEB192FEF8900111A6B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5C32EEA192FEF8900111A6B /* CoreGraphics.framework */; };
 		C5C32EED192FEF8900111A6B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5C32EEC192FEF8900111A6B /* UIKit.framework */; };
@@ -47,6 +49,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C53428C7193224350003F1D0 /* TLDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLDetailViewController.h; sourceTree = "<group>"; };
+		C53428C8193224350003F1D0 /* TLDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLDetailViewController.m; sourceTree = "<group>"; };
+		C53428CA19322F180003F1D0 /* TLMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMapViewController.h; sourceTree = "<group>"; };
+		C53428CB19322F180003F1D0 /* TLMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMapViewController.m; sourceTree = "<group>"; };
 		C5C32EE5192FEF8900111A6B /* Eventz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eventz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5C32EE8192FEF8900111A6B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C5C32EEA192FEF8900111A6B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -199,6 +205,10 @@
 				C5C32F2E193019B800111A6B /* TLEventTabController.m */,
 				C5C32F341930203A00111A6B /* TLListTableViewController.h */,
 				C5C32F351930203A00111A6B /* TLListTableViewController.m */,
+				C53428C7193224350003F1D0 /* TLDetailViewController.h */,
+				C53428C8193224350003F1D0 /* TLDetailViewController.m */,
+				C53428CA19322F180003F1D0 /* TLMapViewController.h */,
+				C53428CB19322F180003F1D0 /* TLMapViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -340,10 +350,12 @@
 				C5C32F4019302A9300111A6B /* TLTableViewCell.m in Sources */,
 				C5C32F361930203A00111A6B /* TLListTableViewController.m in Sources */,
 				C5C32EFF192FEF8900111A6B /* TLViewController.m in Sources */,
+				C53428C9193224350003F1D0 /* TLDetailViewController.m in Sources */,
 				C5C32EF9192FEF8900111A6B /* TLAppDelegate.m in Sources */,
 				C5C32F3D193028B800111A6B /* MBProgressHUD.m in Sources */,
 				C5C32EF5192FEF8900111A6B /* main.m in Sources */,
 				C5C32F2C19300F5400111A6B /* TLEvent.m in Sources */,
+				C53428CC19322F180003F1D0 /* TLMapViewController.m in Sources */,
 				C5C32F291930084300111A6B /* TLUtility.m in Sources */,
 				C5C32F2F193019B800111A6B /* TLEventTabController.m in Sources */,
 			);

@@ -10,11 +10,16 @@
 #import "TLEventTabController.h"
 #import "TLTableViewCell.h"
 #import "TLEvent.h"
+#import "TLAPIWrapper.h"
 #import "TLUtility.h"
+#import "MBProgressHUD.h"
+#import "TLDetailViewController.h"
 
 @interface TLListTableViewController ()
 {
-    NSArray *events;
+    NSMutableArray *events;
+    TLEvent *eventOfInterestForDetailView;
+    int pageNo;
 }
 
 @end
@@ -30,9 +35,27 @@
     return self;
 }
 
+- (void) loadMoreEvents
+{
+    pageNo++;
+    if(pageNo > 1)
+    {
+        TLEventTabController *parent = (TLEventTabController*)[self parentViewController];
+        NSMutableArray *moreData = [TLAPIWrapper searchByLocationInState:parent.state inCity:parent.city inPageNo:pageNo];
+    
+        for (TLEvent *e in moreData)
+        {
+            [events addObject:e];
+        }
+        
+        [self.tableView reloadData];
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    pageNo = 0;
     events = ((TLEventTabController*)[self parentViewController]).eventsFound;
     
     // Uncomment the following line to preserve selection between presentations.
@@ -58,7 +81,6 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
@@ -80,21 +102,33 @@
     cell.eventName.text = eventOfInterest.name;
     cell.eventAddress.text = [NSString stringWithFormat:@"%@\n%@\n%@, %@ %@", eventOfInterest.venue_name, eventOfInterest.venue_street, eventOfInterest.venue_city, eventOfInterest.venue_region_name, eventOfInterest.venue_postal_code];
     
-    if(![eventOfInterest.image_url_small isKindOfClass:[NSNull class]])
+    if(eventOfInterest.imageCache == nil)
     {
-        if(eventOfInterest.imageCache == nil)
-        {
-            NSURL *imgUrl = [[NSURL alloc] initWithString:eventOfInterest.image_url_search];
-            NSData *imgData = [[NSData alloc] initWithContentsOfURL:imgUrl];
-            UIImage *img = [[UIImage alloc] initWithData:imgData];
-            //cell.eventImage.image = img;
-            eventOfInterest.imageCache = img;
-        }
-        cell.eventImage.image = eventOfInterest.imageCache;//[UIImage imageNamed:@"mapIcon@2x.png"];
+        UIImage *img = [TLUtility getImageFromURL:eventOfInterest.image_url_search];
+        //cell.eventImage.image = img;
+        eventOfInterest.imageCache = img;
     }
-    else
-        cell.eventImage.image = [[UIImage alloc] init];
+    cell.eventImage.image = eventOfInterest.imageCache;//[UIImage imageNamed:@"mapIcon@2x.png"];
+
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    eventOfInterestForDetailView = [events objectAtIndex:indexPath.item];
+    
+    [self performSegueWithIdentifier:@"detailViewDemanded" sender:self];
+    
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    if (([scrollView contentOffset].y + scrollView.frame.size.height) >= [scrollView contentSize].height)
+    {
+        [self loadMoreEvents];
+                           
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    }
 }
 
 
@@ -136,7 +170,7 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -144,7 +178,16 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    if ([[segue identifier] isEqualToString:@"detailViewDemanded"])
+    {
+        // Get reference to the tab view controller
+        TLDetailViewController *vc = [segue destinationViewController];
+        
+        // Set variables
+        vc.eventOfInterest = eventOfInterestForDetailView;
+    }
 }
-*/
+
 
 @end

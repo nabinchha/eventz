@@ -24,7 +24,7 @@
     NSString *state;
     NSString *city;
     NSString *fullAddress;
-    NSArray *eventsFound;
+    NSMutableArray *eventsFound;
 }
 
 - (void)viewDidLoad
@@ -66,7 +66,7 @@
             state = [items[1] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
             
             
-            eventsFound = [TLAPIWrapper searchByLocationInState:state inCity:city];
+            eventsFound = [TLAPIWrapper searchByLocationInState:state inCity:city inPageNo:1];
             [MBProgressHUD hideHUDForView:self.view animated:YES];
         
             if(eventsFound.count > 0)

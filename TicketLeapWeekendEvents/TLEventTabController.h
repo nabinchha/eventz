@@ -14,5 +14,5 @@
 @property (strong, nonatomic) NSString *state;
 @property (strong, nonatomic) NSString *country;
 @property (strong, nonatomic) NSString *fullAddress;
-@property (strong, nonatomic) NSArray *eventsFound;
+@property (strong, nonatomic) NSMutableArray *eventsFound;
 @end
