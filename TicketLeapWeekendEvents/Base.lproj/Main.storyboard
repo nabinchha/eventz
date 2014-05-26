@@ -103,7 +103,7 @@
                                         <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gvo-Pu-lHH">
-                                        <rect key="frame" x="8" y="445" width="305" height="30"/>
+                                        <rect key="frame" x="8" y="450" width="305" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="20"/>
                                         <state key="normal" title="Buy Tickets">
@@ -156,7 +156,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City, State" textAlignment="center" minimumFontSize="17" id="9Fg-gM-VoO">
-                                <rect key="frame" x="14" y="269" width="292" height="30"/>
+                                <rect key="frame" x="14" y="269" width="266" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="16"/>
@@ -185,6 +185,16 @@
                                 </state>
                                 <connections>
                                     <action selector="logoClicked:" destination="y9P-sM-jEo" eventType="touchUpInside" id="l7o-vl-O52"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="inB-bP-k3g">
+                                <rect key="frame" x="288" y="269" width="20" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="locationIcon.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="locationServicesRequested:" destination="y9P-sM-jEo" eventType="touchUpInside" id="P0y-Lg-cnc"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -289,6 +299,7 @@
     </scenes>
     <resources>
         <image name="listIcon.png" width="30" height="30"/>
+        <image name="locationIcon.png" width="94" height="128"/>
         <image name="mapIcon.png" width="30" height="30"/>
         <image name="ticketLeapLogo.jpg" width="463" height="64"/>
     </resources>

@@ -120,6 +120,11 @@
     [TLUtility displayAlertWithMessage:[NSString stringWithFormat:@"Enter city and state or use your current location to find ticketleap events in the next two weeks (between %@ and %@).", [TLUtility getWeekendStartDate], [TLUtility getWeekendStopDate]] andHeading:@"About"];
 }
 
+- (IBAction)locationServicesRequested:(id)sender
+{
+    [self startLocationServices];
+}
+
 #pragma mark - CLLocationManagerDelegate
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation

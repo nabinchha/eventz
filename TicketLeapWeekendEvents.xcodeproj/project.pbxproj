@@ -36,6 +36,7 @@
 		C5C32F4019302A9300111A6B /* TLTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C32F3F19302A9300111A6B /* TLTableViewCell.m */; };
 		C5D98C3919338D47006D6F56 /* TLEventAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = C5D98C3819338D47006D6F56 /* TLEventAnnotation.m */; };
 		C5D98C3C1933FD1E006D6F56 /* Splash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5D98C3B1933FD1E006D6F56 /* Splash@2x.png */; };
+		C5D98C3E193405A7006D6F56 /* locationIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = C5D98C3D193405A7006D6F56 /* locationIcon.png */; };
 		C5F47FD819304AED005389B5 /* ticketLeapLogo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C5F47FD719304AED005389B5 /* ticketLeapLogo.jpg */; };
 		C5F47FDA19305134005389B5 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C5F47FD919305134005389B5 /* Logo.png */; };
 /* End PBXBuildFile section */
@@ -95,6 +96,7 @@
 		C5D98C3719338D47006D6F56 /* TLEventAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLEventAnnotation.h; sourceTree = "<group>"; };
 		C5D98C3819338D47006D6F56 /* TLEventAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLEventAnnotation.m; sourceTree = "<group>"; };
 		C5D98C3B1933FD1E006D6F56 /* Splash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Splash@2x.png"; sourceTree = "<group>"; };
+		C5D98C3D193405A7006D6F56 /* locationIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = locationIcon.png; sourceTree = "<group>"; };
 		C5F47FD719304AED005389B5 /* ticketLeapLogo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ticketLeapLogo.jpg; sourceTree = "<group>"; };
 		C5F47FD919305134005389B5 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -171,6 +173,7 @@
 		C5C32EEF192FEF8900111A6B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C5D98C3D193405A7006D6F56 /* locationIcon.png */,
 				C5D98C3B1933FD1E006D6F56 /* Splash@2x.png */,
 				C5F47FD919305134005389B5 /* Logo.png */,
 				C5C32F371930210400111A6B /* mapIcon@2x.png */,
@@ -332,6 +335,7 @@
 				C5C32F391930210400111A6B /* mapIcon@2x.png in Resources */,
 				C5F47FDA19305134005389B5 /* Logo.png in Resources */,
 				C5C32F3A1930210400111A6B /* listIcon@2x.png in Resources */,
+				C5D98C3E193405A7006D6F56 /* locationIcon.png in Resources */,
 				C5C32F01192FEF8900111A6B /* Images.xcassets in Resources */,
 				C5C32EF3192FEF8900111A6B /* InfoPlist.strings in Resources */,
 				C5D98C3C1933FD1E006D6F56 /* Splash@2x.png in Resources */,
