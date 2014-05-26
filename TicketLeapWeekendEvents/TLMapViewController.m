@@ -16,7 +16,6 @@
 
 @interface TLMapViewController ()
 {
-    NSMutableArray *events;
     TLEvent *eventOfInterestForDetailView;
 }
 
@@ -35,6 +34,12 @@
     return self;
 }
 
+-(NSMutableArray*) getEvents
+{
+    TLEventTabController *parent = (TLEventTabController*)[self parentViewController];
+    return parent.eventsFound;
+}
+
 - (void) loadMoreEvents
 {
     
@@ -42,7 +47,7 @@
 
 -(void) loadAnnotations
 {
-    events = ((TLEventTabController*)[self parentViewController]).eventsFound;
+    //events = ((TLEventTabController*)[self parentViewController]).eventsFound;
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
@@ -56,7 +61,7 @@
 
 -(void) addEvents
 {
-    for(TLEvent *event in events)
+    for(TLEvent *event in [self getEvents])
     {
         NSString *location = [NSString stringWithFormat:@"%@, %@, %@ %@", event.venue_street, event.venue_city, event.venue_region_name, event.venue_postal_code];
         CLGeocoder *geocoder = [[CLGeocoder alloc] init];

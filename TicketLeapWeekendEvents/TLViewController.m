@@ -27,10 +27,24 @@
     NSMutableArray *eventsFound;
 }
 
+@synthesize address = _address;
+@synthesize appVersion = _appVersion;
+@synthesize tagGestureRecognizer = _tagGestureRecognizer;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    // Register tap gesture recognizer
+    _tagGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    [self.view addGestureRecognizer:_tagGestureRecognizer];
+
+    // Add version
+    NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
+    NSString *version = [info objectForKey:@"CFBundleShortVersionString"];
+    
+    _appVersion.text = [NSString stringWithFormat:@"Version %@", version];
     
     locationManager = [[CLLocationManager alloc] init];
     geocoder = [[CLGeocoder alloc] init];
@@ -50,6 +64,19 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void) dismissKeyboard
+{
+    [_address resignFirstResponder];
+}
+
+-(void) startLocationServices
+{
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    
+    [locationManager startUpdatingLocation];
+}
+
 - (IBAction)searchClicked:(id)sender
 {
     if(![state isEqualToString:@""] && ![city isEqualToString:@""])
@@ -66,17 +93,20 @@
                 city = [items[0] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
                 state = [items[1] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
                 
-                
                 eventsFound = [TLAPIWrapper searchByLocationInState:state inCity:city inPageNo:1];
-                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                
                 
                 if(eventsFound.count > 0)
                     [self performSegueWithIdentifier:@"validSearchInitiated" sender:self];
                 else
                     [TLUtility displayAlertWithMessage:@"There were no events for the location provided." andHeading:@"No Events Found!"];
             }
-
+            else
+            {
+                [TLUtility displayAlertWithMessage:@"Location must be provided in the format '[City], [State]'" andHeading:@"Invalid input format."];
+            }
             [MBProgressHUD hideHUDForView:self.view animated:YES];
+
         });
     }
     else
@@ -85,25 +115,12 @@
     }
 }
 
--(void) startLocationServices
+- (IBAction)logoClicked:(id)sender
 {
-    locationManager.delegate = self;
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    
-    [locationManager startUpdatingLocation];
+    [TLUtility displayAlertWithMessage:[NSString stringWithFormat:@"Enter city and state or use your current location to find ticketleap events in the next two weeks (between %@ and %@).", [TLUtility getWeekendStartDate], [TLUtility getWeekendStopDate]] andHeading:@"About"];
 }
 
 #pragma mark - CLLocationManagerDelegate
-
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
-{
-    /*
-    NSLog(@"didFailWithError: %@", error);
-    UIAlertView *errorAlert = [[UIAlertView alloc]
-                               initWithTitle:@"Error" message:@"Failed to Get Your Location" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [errorAlert show];
-     */
-}
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
@@ -129,11 +146,11 @@
             
             state = placemark.administrativeArea;
             city = placemark.locality;
-            [self address].text = [NSString stringWithFormat:@"%@, %@", city, state];
+            _address.text = [NSString stringWithFormat:@"%@, %@", city, state];
         }
         else
         {
-            [self address].text = [NSString stringWithFormat:@"%@, %@", @"City", @"State"];
+            _address.text = [NSString stringWithFormat:@"%@, %@", @"City", @"State"];
             NSLog(@"%@", error.debugDescription);
         }
     } ];

@@ -9,8 +9,14 @@
 #import "TLEventTabController.h"
 #import "TLListTableViewController.h"
 #import "TLMapViewController.h"
+#import "TLAPIWrapper.h"
+#import "TLEvent.h"
+#import "MBProgressHUD.h"
 
 @interface TLEventTabController ()
+{
+    int pageNo;
+}
 
 @end
 
@@ -35,6 +41,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    pageNo = 0;
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,16 +52,34 @@
 
 - (IBAction)moreResultsRequested:(id)sender
 {
-    UIViewController *vc = self.selectedViewController;
+    pageNo++;
     
-    if([vc isKindOfClass:[TLListTableViewController class]])
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void)
     {
-        [((TLListTableViewController*)vc) loadMoreEvents];
-    }
-    else if([vc isKindOfClass:[TLMapViewController class]])
-    {
-    
-    }
+        // Do something...
+        NSMutableArray *moreData = [TLAPIWrapper searchByLocationInState:_state inCity:_city inPageNo:pageNo];
+                       
+        for (TLEvent *e in moreData)
+        {
+            [_eventsFound addObject:e];
+        }
+        
+        
+        UIViewController *vc = self.selectedViewController;
+        
+        if([vc isKindOfClass:[TLListTableViewController class]])
+        {
+            [((TLListTableViewController*)vc) reloadTableView];
+        }
+        else if([vc isKindOfClass:[TLMapViewController class]])
+        {
+            [((TLMapViewController*)vc) loadAnnotations];
+        }
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    });    
 }
 
 @end

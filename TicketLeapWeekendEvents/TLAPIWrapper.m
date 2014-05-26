@@ -30,7 +30,7 @@
                                       eventDateBefore:(NSString*) dateBefore
                                                inPage:(int) pageNo
 {
-    NSString *myRelativeUrl = [NSString stringWithFormat:@"events/by/location/%@/%@/%@?key=%@&dates_after=%@&dates_before=%@&page_num=%i&page_size=5", countryCode, state, city, [self getAPIKey], dateAfter, dateBefore, pageNo];
+    NSString *myRelativeUrl = [NSString stringWithFormat:@"events/by/location/%@/%@/%@?key=%@&dates_after=%@&dates_before=%@&page_num=%i&page_size=20", countryCode, state, city, [self getAPIKey], dateAfter, dateBefore, pageNo];
     myRelativeUrl = [myRelativeUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     NSURL *baseURL = [NSURL URLWithString:[self getURLBase]];

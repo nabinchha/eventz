@@ -15,6 +15,4 @@
 
 -(void) loadAnnotations;
 
-- (void) loadMoreEvents;
-
 @end

@@ -26,7 +26,7 @@
         return img;
     }
     else
-        return [[UIImage alloc] initWithContentsOfFile:@"ticketLeapLogo.jpg"];
+        return [UIImage imageNamed:@"ticketLeapLogo.jpg"];
 }
 
 + (UIImage*)resizeImage:(UIImage*)image
@@ -97,7 +97,7 @@
     }
     */
     
-    stopDate = [self convertDateToString:[currDate dateByAddingTimeInterval:60*60*24*7]];
+    stopDate = [self convertDateToString:[currDate dateByAddingTimeInterval:60*60*24*14]];
     
     return stopDate;
 }

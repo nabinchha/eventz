@@ -12,9 +12,8 @@
 
 @interface TLViewController : UIViewController <CLLocationManagerDelegate>
 
-@property (weak, nonatomic) IBOutlet UILabel *latitudeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *longitudeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (strong, nonatomic) IBOutlet UITextField *address;
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tagGestureRecognizer;
+@property (strong, nonatomic) IBOutlet UILabel *appVersion;
 
 @end

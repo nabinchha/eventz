@@ -10,6 +10,6 @@
 
 @interface TLListTableViewController : UITableViewController
 
-- (void) loadMoreEvents;
+- (void) reloadTableView;
 
 @end

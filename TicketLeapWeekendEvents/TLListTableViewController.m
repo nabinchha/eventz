@@ -17,9 +17,7 @@
 
 @interface TLListTableViewController ()
 {
-    NSMutableArray *events;
     TLEvent *eventOfInterestForDetailView;
-    int pageNo;
 }
 
 @end
@@ -35,40 +33,26 @@
     return self;
 }
 
-- (void) loadMoreEvents
+-(NSMutableArray*) getEvents
 {
-    pageNo++;
+    TLEventTabController *parent = (TLEventTabController*)[self parentViewController];
+    return parent.eventsFound;
+}
 
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void)
-    {
-        // Do something...
-        TLEventTabController *parent = (TLEventTabController*)[self parentViewController];
-        
-        NSMutableArray *moreData = [TLAPIWrapper searchByLocationInState:parent.state inCity:parent.city inPageNo:pageNo];
-            
-        for (TLEvent *e in moreData)
-        {
-            [events addObject:e];
-        }
-            
-        [self.tableView reloadData];
-
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-    });
+- (void) reloadTableView
+{
+    [self.tableView reloadData];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    pageNo = 0;
-    events = ((TLEventTabController*)[self parentViewController]).eventsFound;
 }
 
 -(void) viewWillAppear:(BOOL)animated
 {
     [[self navigationController] setNavigationBarHidden:NO animated:YES];
+    [self reloadTableView];
 
 }
 
@@ -89,7 +73,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return events.count;
+    return [self getEvents].count;
 }
 
 
@@ -97,7 +81,7 @@
 {
     TLTableViewCell *cell = (TLTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"TLCELL" forIndexPath:indexPath];
     
-    TLEvent *eventOfInterest = [events objectAtIndex:indexPath.item];
+    TLEvent *eventOfInterest = [[self getEvents] objectAtIndex:indexPath.item];
     
     // Configure the cell...
     cell.eventName.text = eventOfInterest.name;
@@ -116,7 +100,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    eventOfInterestForDetailView = [events objectAtIndex:indexPath.item];
+    eventOfInterestForDetailView = [[self getEvents] objectAtIndex:indexPath.item];
     
     [self performSegueWithIdentifier:@"detailViewDemanded" sender:self];
     
