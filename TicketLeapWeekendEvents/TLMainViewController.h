@@ -10,7 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "TLUtility.h"
 
-@interface TLViewController : UIViewController <CLLocationManagerDelegate>
+@interface TLMainViewController : UIViewController <CLLocationManagerDelegate>
 
 @property (strong, nonatomic) IBOutlet UITextField *address;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tagGestureRecognizer;

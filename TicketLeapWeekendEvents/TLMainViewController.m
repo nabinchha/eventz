@@ -6,17 +6,17 @@
 //  Copyright (c) 2014 TestApp. All rights reserved.
 //
 
-#import "TLViewController.h"
+#import "TLMainViewController.h"
 #import "TLEventTabController.h"
 #import "TLAPIWrapper.h"
 #import "TLEvent.h"
 #import "MBProgressHUD.h"
 
-@interface TLViewController ()
+@interface TLMainViewController ()
 
 @end
 
-@implementation TLViewController
+@implementation TLMainViewController
 {
     CLLocationManager *locationManager;
     CLGeocoder *geocoder;

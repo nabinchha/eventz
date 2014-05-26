@@ -55,4 +55,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)buyTicketsPressed:(id)sender
+{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:_eventOfInterest.url]];
+}
+
 @end

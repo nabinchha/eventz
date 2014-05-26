@@ -16,7 +16,7 @@
 		C5C32EF5192FEF8900111A6B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C32EF4192FEF8900111A6B /* main.m */; };
 		C5C32EF9192FEF8900111A6B /* TLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C32EF8192FEF8900111A6B /* TLAppDelegate.m */; };
 		C5C32EFC192FEF8900111A6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5C32EFA192FEF8900111A6B /* Main.storyboard */; };
-		C5C32EFF192FEF8900111A6B /* TLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C32EFE192FEF8900111A6B /* TLViewController.m */; };
+		C5C32EFF192FEF8900111A6B /* TLMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C32EFE192FEF8900111A6B /* TLMainViewController.m */; };
 		C5C32F01192FEF8900111A6B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5C32F00192FEF8900111A6B /* Images.xcassets */; };
 		C5C32F08192FEF8900111A6B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5C32F07192FEF8900111A6B /* XCTest.framework */; };
 		C5C32F09192FEF8900111A6B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5C32EE8192FEF8900111A6B /* Foundation.framework */; };
@@ -66,8 +66,8 @@
 		C5C32EF7192FEF8900111A6B /* TLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLAppDelegate.h; sourceTree = "<group>"; };
 		C5C32EF8192FEF8900111A6B /* TLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLAppDelegate.m; sourceTree = "<group>"; };
 		C5C32EFB192FEF8900111A6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C5C32EFD192FEF8900111A6B /* TLViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLViewController.h; sourceTree = "<group>"; };
-		C5C32EFE192FEF8900111A6B /* TLViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLViewController.m; sourceTree = "<group>"; };
+		C5C32EFD192FEF8900111A6B /* TLMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLMainViewController.h; sourceTree = "<group>"; };
+		C5C32EFE192FEF8900111A6B /* TLMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLMainViewController.m; sourceTree = "<group>"; };
 		C5C32F00192FEF8900111A6B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C5C32F06192FEF8900111A6B /* TicketLeapWeekendEventsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TicketLeapWeekendEventsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5C32F07192FEF8900111A6B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -205,8 +205,8 @@
 		C5C32F30193019D900111A6B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C5C32EFD192FEF8900111A6B /* TLViewController.h */,
-				C5C32EFE192FEF8900111A6B /* TLViewController.m */,
+				C5C32EFD192FEF8900111A6B /* TLMainViewController.h */,
+				C5C32EFE192FEF8900111A6B /* TLMainViewController.m */,
 				C5C32F2D193019B800111A6B /* TLEventTabController.h */,
 				C5C32F2E193019B800111A6B /* TLEventTabController.m */,
 				C5C32F341930203A00111A6B /* TLListTableViewController.h */,
@@ -359,7 +359,7 @@
 				C5C32F4019302A9300111A6B /* TLTableViewCell.m in Sources */,
 				C5D98C3919338D47006D6F56 /* TLEventAnnotation.m in Sources */,
 				C5C32F361930203A00111A6B /* TLListTableViewController.m in Sources */,
-				C5C32EFF192FEF8900111A6B /* TLViewController.m in Sources */,
+				C5C32EFF192FEF8900111A6B /* TLMainViewController.m in Sources */,
 				C53428C9193224350003F1D0 /* TLDetailViewController.m in Sources */,
 				C5C32EF9192FEF8900111A6B /* TLAppDelegate.m in Sources */,
 				C5C32F3D193028B800111A6B /* MBProgressHUD.m in Sources */,
