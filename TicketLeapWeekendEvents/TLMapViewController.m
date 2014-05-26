@@ -9,10 +9,15 @@
 #import "TLMapViewController.h"
 #import "TLEventTabController.h"
 #import "TLEvent.h"
+#import "TLEventAnnotation.h"
+#import "TLUtility.h"
+#import "TLDetailViewController.h"
+#import "MBProgressHUD.h"
 
 @interface TLMapViewController ()
 {
     NSMutableArray *events;
+    TLEvent *eventOfInterestForDetailView;
 }
 
 @end
@@ -30,6 +35,25 @@
     return self;
 }
 
+- (void) loadMoreEvents
+{
+    
+}
+
+-(void) loadAnnotations
+{
+    events = ((TLEventTabController*)[self parentViewController]).eventsFound;
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void)
+    {
+        // Do something...
+        [self addEvents];
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    });
+}
+
 -(void) addEvents
 {
     for(TLEvent *event in events)
@@ -42,35 +66,64 @@
             if (placemarks && placemarks.count > 0)
             {
                 CLPlacemark *topResult = [placemarks objectAtIndex:0];
-                MKPlacemark *placemark = [[MKPlacemark alloc] initWithPlacemark:topResult];
-            
-                //placemark.title = event.name;
                 
-                MKCoordinateRegion region = self.mapView.region;
-                region.center = [(CLCircularRegion *)placemark.region center];
-                region.span.longitudeDelta /= 8.0;
-                region.span.latitudeDelta /= 8.0;
+                // Add an annotation
+                //MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+                TLEventAnnotation *ann = [[TLEventAnnotation alloc] initWithLocation:topResult.location.coordinate];
+                ann.eventDetails = event;
+
+                ann.title = event.name;
+                ann.subtitle = [NSString stringWithFormat:@"%@", event.venue_name];
+                [self.mapView addAnnotation:ann];
                 
-                [self.mapView setRegion:region animated:YES];
-                [self.mapView addAnnotation:placemark];
+                MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(topResult.location.coordinate, 10000, 10000);
+                [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
             }
         }
         ];
     }
-    /*
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(.coordinate, 800, 800);
-    
-    [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
-    
-    // Add an annotation
-    MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
-    point.coordinate = userLocation.coordinate;
-    point.title = @"Where am I?";
-    point.subtitle = @"I'm here!!!";
-    
-    [self.mapView addAnnotation:point];
-    */
 }
+
+
+- (MKAnnotationView *)mapView:(MKMapView *)theMapView viewForAnnotation:(id <MKAnnotation>)annotation
+{
+    TLEventAnnotation *ann = (TLEventAnnotation*) annotation;
+    
+    // Try to dequeue an existing pin view first (code not shown).
+    
+    // If no pin view already exists, create a new one.
+    MKPinAnnotationView *customPinView = [[MKPinAnnotationView alloc] init];
+                                         // initWithAnnotation:annotation reuseIdentifier:BridgeAnnotationIdentifier];
+    customPinView.pinColor = MKPinAnnotationColorPurple;
+    customPinView.animatesDrop = YES;
+    customPinView.canShowCallout = YES;
+    
+    // Because this is an iOS app, add the detail disclosure button to display details about the annotation in another view.
+    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    [rightButton addTarget:nil action:nil forControlEvents:UIControlEventTouchUpInside];
+    customPinView.rightCalloutAccessoryView = rightButton;
+    
+    // Add a custom image to the left side of the callout.
+    UIImage *img = [TLUtility getImageFromURL:ann.eventDetails.image_url_search];
+    UIImageView *myCustomImage = [[UIImageView alloc] initWithImage:img];
+    customPinView.leftCalloutAccessoryView = myCustomImage;
+    
+    return customPinView;
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+{
+    eventOfInterestForDetailView = ((TLEventAnnotation*)view.annotation).eventDetails;
+    NSLog(@"you touched the disclosure indicator");
+    
+    [self eventDetailDemanded];
+}
+
+-(void) eventDetailDemanded
+{
+    [self performSegueWithIdentifier:@"detailViewDemanded" sender:self];
+}
+
 
 - (void)viewDidLoad
 {
@@ -78,11 +131,11 @@
     
     // Do any additional setup after loading the view.
     self.mapView.delegate = self;
-    //_mapView.showsUserLocation = YES;
-    
-    events = ((TLEventTabController*)[self parentViewController]).eventsFound;
-    
-    [self addEvents];
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    [self loadAnnotations];
 }
 
 - (void)didReceiveMemoryWarning
@@ -97,7 +150,7 @@
     [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -105,7 +158,18 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    if ([[segue identifier] isEqualToString:@"detailViewDemanded"])
+    {
+        // Get reference to the tab view controller
+        TLDetailViewController *vc = [segue destinationViewController];
+        
+        // Set variables
+        //TLEvent *event = [[TLEvent alloc]init];
+        vc.eventOfInterest = eventOfInterestForDetailView;
+    }
+
 }
-*/
+
 
 @end

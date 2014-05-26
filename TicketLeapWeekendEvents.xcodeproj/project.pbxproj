@@ -34,6 +34,7 @@
 		C5C32F3A1930210400111A6B /* listIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5C32F381930210400111A6B /* listIcon@2x.png */; };
 		C5C32F3D193028B800111A6B /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C32F3C193028B800111A6B /* MBProgressHUD.m */; };
 		C5C32F4019302A9300111A6B /* TLTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C32F3F19302A9300111A6B /* TLTableViewCell.m */; };
+		C5D98C3919338D47006D6F56 /* TLEventAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = C5D98C3819338D47006D6F56 /* TLEventAnnotation.m */; };
 		C5F47FD819304AED005389B5 /* ticketLeapLogo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C5F47FD719304AED005389B5 /* ticketLeapLogo.jpg */; };
 		C5F47FDA19305134005389B5 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C5F47FD919305134005389B5 /* Logo.png */; };
 /* End PBXBuildFile section */
@@ -90,6 +91,8 @@
 		C5C32F3C193028B800111A6B /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		C5C32F3E19302A9300111A6B /* TLTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLTableViewCell.h; sourceTree = "<group>"; };
 		C5C32F3F19302A9300111A6B /* TLTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLTableViewCell.m; sourceTree = "<group>"; };
+		C5D98C3719338D47006D6F56 /* TLEventAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLEventAnnotation.h; sourceTree = "<group>"; };
+		C5D98C3819338D47006D6F56 /* TLEventAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLEventAnnotation.m; sourceTree = "<group>"; };
 		C5F47FD719304AED005389B5 /* ticketLeapLogo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ticketLeapLogo.jpg; sourceTree = "<group>"; };
 		C5F47FD919305134005389B5 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -205,10 +208,10 @@
 				C5C32F2E193019B800111A6B /* TLEventTabController.m */,
 				C5C32F341930203A00111A6B /* TLListTableViewController.h */,
 				C5C32F351930203A00111A6B /* TLListTableViewController.m */,
-				C53428C7193224350003F1D0 /* TLDetailViewController.h */,
-				C53428C8193224350003F1D0 /* TLDetailViewController.m */,
 				C53428CA19322F180003F1D0 /* TLMapViewController.h */,
 				C53428CB19322F180003F1D0 /* TLMapViewController.m */,
+				C53428C7193224350003F1D0 /* TLDetailViewController.h */,
+				C53428C8193224350003F1D0 /* TLDetailViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -218,6 +221,8 @@
 			children = (
 				C5C32F2A19300F5400111A6B /* TLEvent.h */,
 				C5C32F2B19300F5400111A6B /* TLEvent.m */,
+				C5D98C3719338D47006D6F56 /* TLEventAnnotation.h */,
+				C5D98C3819338D47006D6F56 /* TLEventAnnotation.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -348,6 +353,7 @@
 			files = (
 				C5C32F25192FFB0000111A6B /* TLAPIWrapper.m in Sources */,
 				C5C32F4019302A9300111A6B /* TLTableViewCell.m in Sources */,
+				C5D98C3919338D47006D6F56 /* TLEventAnnotation.m in Sources */,
 				C5C32F361930203A00111A6B /* TLListTableViewController.m in Sources */,
 				C5C32EFF192FEF8900111A6B /* TLViewController.m in Sources */,
 				C53428C9193224350003F1D0 /* TLDetailViewController.m in Sources */,

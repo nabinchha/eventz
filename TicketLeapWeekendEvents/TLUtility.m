@@ -18,7 +18,7 @@
 
 +(UIImage*) getImageFromURL:(NSString*)imageURL
 {
-    if(![imageURL isKindOfClass:[NSNull class]])
+    if(![imageURL isKindOfClass:[NSNull class]] && imageURL != nil)
     {
         NSURL *imgUrl = [[NSURL alloc] initWithString:imageURL];
         NSData *imgData = [[NSData alloc] initWithContentsOfURL:imgUrl];
@@ -26,7 +26,7 @@
         return img;
     }
     else
-        return [[UIImage alloc] init];
+        return [[UIImage alloc] initWithContentsOfFile:@"ticketLeapLogo.jpg"];
 }
 
 + (UIImage*)resizeImage:(UIImage*)image

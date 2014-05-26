@@ -15,8 +15,9 @@
 
 @property (strong, nonatomic) IBOutlet UIImageView *eventImage;
 
-@property (strong, nonatomic) IBOutlet UITextView *eventDescription;
+@property (strong, nonatomic) IBOutlet UITextView *eventInfo;
 
 @property (strong, nonatomic) TLEvent *eventOfInterest;
 
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @end

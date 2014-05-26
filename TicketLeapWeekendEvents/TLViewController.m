@@ -54,27 +54,30 @@
 {
     if(![state isEqualToString:@""] && ![city isEqualToString:@""])
     {
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.labelText = @"Loading...";
-        hud.dimBackground = YES;
-
-        NSArray *items = [[self address].text componentsSeparatedByString:@","];
-        
-        if(items.count == 2)
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void)
         {
-            city = [items[0] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-            state = [items[1] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+            // Do something...
+            NSArray *items = [[self address].text componentsSeparatedByString:@","];
             
-            
-            eventsFound = [TLAPIWrapper searchByLocationInState:state inCity:city inPageNo:1];
+            if(items.count == 2)
+            {
+                city = [items[0] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                state = [items[1] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                
+                
+                eventsFound = [TLAPIWrapper searchByLocationInState:state inCity:city inPageNo:1];
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                
+                if(eventsFound.count > 0)
+                    [self performSegueWithIdentifier:@"validSearchInitiated" sender:self];
+                else
+                    [TLUtility displayAlertWithMessage:@"There were no events for the location provided." andHeading:@"No Events Found!"];
+            }
+
             [MBProgressHUD hideHUDForView:self.view animated:YES];
-        
-            if(eventsFound.count > 0)
-                [self performSegueWithIdentifier:@"validSearchInitiated" sender:self];
-            else
-                [TLUtility displayAlertWithMessage:@"There were no events for the location provided." andHeading:@"No Events Found!"];
-        }
-        //[TLAPIWrapper searchByLocationInState:state inCity:city];
+        });
     }
     else
     {

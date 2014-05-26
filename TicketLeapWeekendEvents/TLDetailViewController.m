@@ -16,9 +16,11 @@
 @implementation TLDetailViewController
 
 @synthesize eventName = _eventName;
-@synthesize eventDescription = _eventDescription;
+@synthesize eventInfo =_eventInfo;
 @synthesize eventImage = _eventImage;
 @synthesize eventOfInterest = _eventOfInterest;
+
+@synthesize scrollView = _scrollView;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -34,10 +36,17 @@
 {
     [super viewDidLoad];
     
-    _eventName.text = _eventOfInterest.name;
-    _eventDescription.text = _eventOfInterest.description;
-    _eventImage.image = [TLUtility getImageFromURL:_eventOfInterest.image_url_medium];
     // Do any additional setup after loading the view.
+    
+    _eventName.text = _eventOfInterest.name;
+    
+    NSString *address = [NSString stringWithFormat:@"%@\n%@\n%@, %@ %@", _eventOfInterest.venue_name, _eventOfInterest.venue_street, _eventOfInterest.venue_city, _eventOfInterest.venue_region_name, _eventOfInterest.venue_postal_code];
+    
+    _eventInfo.text = [NSString stringWithFormat:@"Event Address: \n\n%@\nStart Date: %@\nEnd Date: %@\n\n%@", address, _eventOfInterest.earliest_start_utc, _eventOfInterest.earliest_end_utc, _eventOfInterest.description ];
+    
+    _eventImage.image = [TLUtility getImageFromURL:_eventOfInterest.image_url_medium];
+    
+    self.scrollView.contentSize = self.view.frame.size;
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,16 +54,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

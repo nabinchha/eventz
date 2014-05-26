@@ -9,6 +9,7 @@
 #import "TLAPIWrapper.h"
 #import "TLEvent.h"
 #import "TLUtility.h"
+#import "MBProgressHUD.h"
 
 @implementation TLAPIWrapper
 
@@ -29,7 +30,7 @@
                                       eventDateBefore:(NSString*) dateBefore
                                                inPage:(int) pageNo
 {
-    NSString *myRelativeUrl = [NSString stringWithFormat:@"events/by/location/%@/%@/%@?key=%@&dates_after=%@&dates_before=%@&page_num=%i", countryCode, state, city, [self getAPIKey], dateAfter, dateBefore, pageNo];
+    NSString *myRelativeUrl = [NSString stringWithFormat:@"events/by/location/%@/%@/%@?key=%@&dates_after=%@&dates_before=%@&page_num=%i&page_size=5", countryCode, state, city, [self getAPIKey], dateAfter, dateBefore, pageNo];
     myRelativeUrl = [myRelativeUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     NSURL *baseURL = [NSURL URLWithString:[self getURLBase]];
@@ -104,11 +105,6 @@
     
     NSArray *events = [self getEventsFromJSON:responseData];
     
-    for(int i=0; i < events.count; ++i)
-    {
-        TLEvent *event = events[i];
-        NSLog(@"%@", event.name);
-    }
     return events;
 }
 

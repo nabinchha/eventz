@@ -11,7 +11,10 @@
 
 @interface TLMapViewController : UIViewController<MKMapViewDelegate>
 
-
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
+
+-(void) loadAnnotations;
+
+- (void) loadMoreEvents;
 
 @end
