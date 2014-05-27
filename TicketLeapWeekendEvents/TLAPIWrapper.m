@@ -97,8 +97,8 @@
                              inCity:(NSString*)city
                            inPageNo:(int)pageNo
 {
-    NSString *startDate = [TLUtility getWeekendStartDate];
-    NSString *stopDate = [TLUtility getWeekendStopDate];
+    NSString *startDate = [self getWeekendStartDate];
+    NSString *stopDate = [self getWeekendStopDate];
     
     NSURL *url = [self getURLToGetEventsByLocationUsingCountryCode:@"USA" withState:state withCity:city eventDateAfter:startDate eventDateBefore:stopDate inPage:pageNo];
     
@@ -109,5 +109,46 @@
     return events;
 }
 
++(NSString*) getWeekendStartDate
+{
+    NSString *startDate;
+    
+    NSDate *currDate = [NSDate date];
+    
+    NSString *dayOfWeek = [TLUtility getDayOfTheWeek];
+    
+    if([dayOfWeek isEqualToString:@"1"])
+        startDate = [TLUtility convertDateToString:currDate];
+    else
+    {
+        NSDate* weekendDate = [currDate dateByAddingTimeInterval:60*60*24*(7-[dayOfWeek integerValue])];
+        startDate = [TLUtility convertDateToString:weekendDate];
+    }
+    
+    return startDate;
+}
+
++(NSString*) getWeekendStopDate
+{
+    NSString *stopDate;
+    
+    NSDate *currDate = [NSDate date];
+    
+    /*
+     NSString *dayOfWeek = [self getDayOfTheWeek];
+     
+     if([dayOfWeek isEqualToString:@"1"])
+     stopDate = [self convertDateToString:currDate];
+     else
+     {
+     NSDate* weekendDate = [currDate dateByAddingTimeInterval:60*60*24*(8-[dayOfWeek integerValue])];
+     stopDate = [self convertDateToString:weekendDate];
+     }
+     */
+    
+    stopDate = [TLUtility convertDateToString:[currDate dateByAddingTimeInterval:60*60*24*14]];
+    
+    return stopDate;
+}
 
 @end

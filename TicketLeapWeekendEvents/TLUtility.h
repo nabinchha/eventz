@@ -18,8 +18,8 @@
 + (UIImage*)resizeImage:(UIImage*)image
            scaledToSize:(CGSize)newSize;
 
-+(NSString*) getWeekendStartDate;
++(NSString*) getDayOfTheWeek;
 
-+(NSString*) getWeekendStopDate;
++(NSString*) convertDateToString:(NSDate*) date;
 
 @end

@@ -14,5 +14,8 @@
 +(NSMutableArray*) searchByLocationInState:(NSString*) state
                              inCity:(NSString*)city
                            inPageNo:(int)pageNo;
++(NSString*) getWeekendStartDate;
+
++(NSString*) getWeekendStopDate;
 
 @end

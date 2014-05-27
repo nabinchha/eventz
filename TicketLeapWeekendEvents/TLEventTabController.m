@@ -12,6 +12,7 @@
 #import "TLMapViewController.h"
 #import "TLAPIWrapper.h"
 #import "TLEvent.h"
+#import "TLUtility.h"
 #import "MBProgressHUD.h"
 
 @interface TLEventTabController ()
@@ -42,7 +43,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    pageNo = 0;
+    pageNo = 1;
     
     self.tabBar.tintColor = [UIColor colorWithRed:0.878 green:0.2 blue:0.42 alpha:1];
     //[UIColor colorWithRed:238.0f/255.0f green:204.0f/255.0f blue:204.0f/255.0f alpha:1.0];
@@ -64,22 +65,28 @@
     {
         // Do something...
         NSMutableArray *moreData = [TLAPIWrapper searchByLocationInState:_state inCity:_city inPageNo:pageNo];
-                       
-        for (TLEvent *e in moreData)
+        
+        if(moreData.count > 0)
         {
-            [_eventsFound addObject:e];
+            for (TLEvent *e in moreData)
+            {
+                [_eventsFound addObject:e];
+            }
+        
+            UIViewController *vc = self.selectedViewController;
+        
+            if([vc isKindOfClass:[TLListTableViewController class]])
+            {
+                [((TLListTableViewController*)vc) reloadTableView];
+            }
+            else if([vc isKindOfClass:[TLMapViewController class]])
+            {
+                [((TLMapViewController*)vc) loadAnnotations];
+            }
         }
-        
-        
-        UIViewController *vc = self.selectedViewController;
-        
-        if([vc isKindOfClass:[TLListTableViewController class]])
+        else
         {
-            [((TLListTableViewController*)vc) reloadTableView];
-        }
-        else if([vc isKindOfClass:[TLMapViewController class]])
-        {
-            [((TLMapViewController*)vc) loadAnnotations];
+            [TLUtility displayAlertWithMessage: [NSString stringWithFormat:@"There are no more events happening between %@ and %@", [TLAPIWrapper getWeekendStartDate], [TLAPIWrapper getWeekendStopDate]]  andHeading:@"Sorry, we're out of events!"];
         }
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];

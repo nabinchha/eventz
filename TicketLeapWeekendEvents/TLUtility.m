@@ -61,46 +61,4 @@
     return myDate;
 }
 
-+(NSString*) getWeekendStartDate
-{
-    NSString *startDate;
-    
-    NSDate *currDate = [NSDate date];
-    
-    NSString *dayOfWeek = [self getDayOfTheWeek];
-    
-    if([dayOfWeek isEqualToString:@"1"])
-        startDate = [self convertDateToString:currDate];
-    else
-    {
-        NSDate* weekendDate = [currDate dateByAddingTimeInterval:60*60*24*(7-[dayOfWeek integerValue])];
-        startDate = [self convertDateToString:weekendDate];
-    }
-    
-    return startDate;
-}
-
-+(NSString*) getWeekendStopDate
-{
-    NSString *stopDate;
-    
-    NSDate *currDate = [NSDate date];
-    
-    /*
-    NSString *dayOfWeek = [self getDayOfTheWeek];
-    
-    if([dayOfWeek isEqualToString:@"1"])
-        stopDate = [self convertDateToString:currDate];
-    else
-    {
-        NSDate* weekendDate = [currDate dateByAddingTimeInterval:60*60*24*(8-[dayOfWeek integerValue])];
-        stopDate = [self convertDateToString:weekendDate];
-    }
-    */
-    
-    stopDate = [self convertDateToString:[currDate dateByAddingTimeInterval:60*60*24*14]];
-    
-    return stopDate;
-}
-
 @end
