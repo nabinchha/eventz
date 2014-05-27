@@ -81,7 +81,7 @@
                 ann.subtitle = [NSString stringWithFormat:@"%@", event.venue_name];
                 [self.mapView addAnnotation:ann];
                 
-                MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(topResult.location.coordinate, 10000, 10000);
+                MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(topResult.location.coordinate, 11000, 11000);
                 [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
             }
         }
@@ -89,10 +89,9 @@
     }
 }
 
-
 - (MKAnnotationView *)mapView:(MKMapView *)theMapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
-    TLEventAnnotation *ann = (TLEventAnnotation*) annotation;
+    //TLEventAnnotation *ann = (TLEventAnnotation*) annotation;
     
     // Try to dequeue an existing pin view first (code not shown).
     
@@ -109,9 +108,12 @@
     customPinView.rightCalloutAccessoryView = rightButton;
     
     // Add a custom image to the left side of the callout.
+    /*
     UIImage *img = [TLUtility getImageFromURL:ann.eventDetails.image_url_search];
     UIImageView *myCustomImage = [[UIImageView alloc] initWithImage:img];
+    myCustomImage.contentMode = UIViewContentModeScaleAspectFill;
     customPinView.leftCalloutAccessoryView = myCustomImage;
+     */
     
     return customPinView;
 }
@@ -173,7 +175,6 @@
         //TLEvent *event = [[TLEvent alloc]init];
         vc.eventOfInterest = eventOfInterestForDetailView;
     }
-
 }
 
 

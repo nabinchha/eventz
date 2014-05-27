@@ -7,6 +7,7 @@
 //
 
 #import "TLDetailViewController.h"
+#import "TLWebViewController.h"
 #import "TLUtility.h"
 
 @interface TLDetailViewController ()
@@ -44,7 +45,7 @@
     
     _eventInfo.text = [NSString stringWithFormat:@"Event Address: \n\n%@\nStart Date: %@\nEnd Date: %@\n\n%@", address, _eventOfInterest.earliest_start_utc, _eventOfInterest.earliest_end_utc, _eventOfInterest.description ];
     
-    _eventImage.image = [TLUtility getImageFromURL:_eventOfInterest.image_url_medium];
+    _eventImage.image = [TLUtility getImageFromURL:_eventOfInterest.image_url_full];
     
     self.scrollView.contentSize = self.view.frame.size;
 }
@@ -57,7 +58,23 @@
 
 - (IBAction)buyTicketsPressed:(id)sender
 {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:_eventOfInterest.url]];
+    [self performSegueWithIdentifier:@"redirectToLink" sender:self];
+}
+
+
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+     if ([[segue identifier] isEqualToString:@"redirectToLink"])
+     {
+         // Get reference to the tab view controller
+         TLWebViewController *vc = [segue destinationViewController];
+         
+         // Set variables
+         vc.url = _eventOfInterest.url;
+     }
 }
 
 @end

@@ -69,7 +69,7 @@
             </objects>
             <point key="canvasLocation" x="1135" y="69"/>
         </scene>
-        <!--Detail View Controller-->
+        <!--Detail View Controller - Event Details-->
         <scene sceneID="s1r-IH-ZUg">
             <objects>
                 <viewController id="elB-lp-i6f" customClass="TLDetailViewController" sceneMemberID="viewController">
@@ -119,17 +119,46 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" id="7r1-hu-imj"/>
+                    <navigationItem key="navigationItem" title="Event Details" id="7r1-hu-imj"/>
                     <connections>
                         <outlet property="eventImage" destination="JCb-0f-mEy" id="9Ka-SR-Sp1"/>
                         <outlet property="eventInfo" destination="qmu-FC-D56" id="3xi-Jg-r7W"/>
                         <outlet property="eventName" destination="SOW-sh-Kjr" id="x7n-6N-ce9"/>
                         <outlet property="scrollView" destination="Ghj-pD-bAz" id="Ihh-yD-4sH"/>
+                        <segue destination="xK4-K3-huB" kind="push" identifier="redirectToLink" id="BEh-aE-UZf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="34C-zB-93n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1684" y="425"/>
+            <point key="canvasLocation" x="1677" y="425"/>
+        </scene>
+        <!--Web View Controller - Buy Tickets-->
+        <scene sceneID="7dQ-rD-ok6">
+            <objects>
+                <viewController id="xK4-K3-huB" customClass="TLWebViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LWK-rb-5P3">
+                        <rect key="frame" x="0.0" y="44" width="320" height="524"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" id="Phy-ff-3u7">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" title="Buy Tickets" id="UHH-S7-uCE">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="3bT-YR-8NL"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="webView" destination="Phy-ff-3u7" id="fS0-Om-wgU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wau-qq-geq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2118" y="430"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="M8Y-WT-QRk">

@@ -26,7 +26,7 @@
         return img;
     }
     else
-        return [UIImage imageNamed:@"ticketLeapLogo.jpg"];
+        return [UIImage imageNamed:@"Logo.png"];
 }
 
 + (UIImage*)resizeImage:(UIImage*)image
