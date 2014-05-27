@@ -1,7 +1,7 @@
 Eventz
 ======
 
-iPhone app that uses TicketLeap public REST API.
+iPhone app that uses TicketLeap's public REST API. The app provides an easy way to look for events around you. The current version displays events that are happening in the next two weeks.
 
 ![alt tag](/photo1.PNG)
 
