@@ -44,7 +44,7 @@
     
     NSString *address = [NSString stringWithFormat:@"%@\n%@\n%@, %@ %@", _eventOfInterest.venue_name, _eventOfInterest.venue_street, _eventOfInterest.venue_city, _eventOfInterest.venue_region_name, _eventOfInterest.venue_postal_code];
     
-    _eventInfo.text = [NSString stringWithFormat:@"Event Address: \n\n%@\nStart Date: %@\nEnd Date: %@\n\n%@", address, _eventOfInterest.earliest_start_utc, _eventOfInterest.earliest_end_utc, _eventOfInterest.description ];
+    _eventInfo.text = [NSString stringWithFormat:@"Event Address: \n\n%@\n\nStart Date: %@\nEnd Date: %@\n\n%@", address, _eventOfInterest.earliest_start_local, _eventOfInterest.earliest_end_local, _eventOfInterest.description ];
     
     _eventImage.image = [TLUtility getImageFromURL:_eventOfInterest.image_url_full];
     

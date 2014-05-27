@@ -118,7 +118,7 @@
 
 - (IBAction)logoClicked:(id)sender
 {
-    [TLUtility displayAlertWithMessage:[NSString stringWithFormat:@"Enter city and state or use your current location to find ticketleap events in the next two weeks (between %@ and %@).", [TLAPIWrapper getWeekendStartDate], [TLAPIWrapper getWeekendStopDate]] andHeading:@"About"];
+    [TLUtility displayAlertWithMessage:[NSString stringWithFormat:@"Enter city and state or use your current location to find ticketleap events happening in the next three weeks (between %@ and %@). Have fun!\n- NM", [TLAPIWrapper getWeekendStartDate], [TLAPIWrapper getWeekendStopDate]] andHeading:@"About"];
 }
 
 - (IBAction)locationServicesRequested:(id)sender

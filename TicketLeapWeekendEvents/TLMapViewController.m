@@ -139,6 +139,7 @@
     
     // Do any additional setup after loading the view.
     self.mapView.delegate = self;
+    //self.mapView.showsUserLocation = YES;
 }
 
 -(void) viewWillAppear:(BOOL)animated

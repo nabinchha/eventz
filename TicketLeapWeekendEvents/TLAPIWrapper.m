@@ -115,6 +115,7 @@
     
     NSDate *currDate = [NSDate date];
     
+    /*
     NSString *dayOfWeek = [TLUtility getDayOfTheWeek];
     
     if([dayOfWeek isEqualToString:@"1"])
@@ -124,6 +125,9 @@
         NSDate* weekendDate = [currDate dateByAddingTimeInterval:60*60*24*(7-[dayOfWeek integerValue])];
         startDate = [TLUtility convertDateToString:weekendDate];
     }
+    */
+    
+    startDate = [TLUtility convertDateToString:currDate];
     
     return startDate;
 }
@@ -146,7 +150,7 @@
      }
      */
     
-    stopDate = [TLUtility convertDateToString:[currDate dateByAddingTimeInterval:60*60*24*14]];
+    stopDate = [TLUtility convertDateToString:[currDate dateByAddingTimeInterval:60*60*24*21]];
     
     return stopDate;
 }
