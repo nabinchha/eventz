@@ -3,6 +3,7 @@ Eventz
 
 iPhone app that uses TicketLeap public REST API.
 
+![Sample](https://github.com/escoz/QuickDialog/raw/master/other/quickdialog2.png "Sample")
 ![alt tag](photo1.png)
 ![alt tag](photo2.png)
 ![alt tag](photo3.png)
