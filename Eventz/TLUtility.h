@@ -19,9 +19,9 @@
 
 +(NSString*) getDayOfTheWeek;
 
-+(NSString*) getWeekendStartDate;
++(NSString*) getSearchStartDate;
 
-+(NSString*) getWeekendStopDate;
++(NSString*) getSearchStopDate;
 
 +(NSMutableArray *) getEventsFromJSON:(NSData *)objectNotation;
 

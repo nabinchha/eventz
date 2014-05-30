@@ -86,7 +86,7 @@
         }
         else
         {
-            [TLUtility displayAlertWithMessage: [NSString stringWithFormat:@"There are no more events happening between %@ and %@", [TLUtility getWeekendStartDate], [TLUtility getWeekendStopDate]]  andHeading:@"Sorry, we're out of events!"];
+            [TLUtility displayAlertWithMessage: [NSString stringWithFormat:@"There are no more events happening between %@ and %@", [TLUtility getSearchStartDate], [TLUtility getSearchStopDate]]  andHeading:@"Sorry, we're out of events!"];
         }
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];

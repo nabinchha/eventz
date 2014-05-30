@@ -63,8 +63,8 @@
                              inCity:(NSString*)city
                            inPageNo:(int)pageNo
 {
-    NSString *startDate = [TLUtility getWeekendStartDate];
-    NSString *stopDate = [TLUtility getWeekendStopDate];
+    NSString *startDate = [TLUtility getSearchStartDate];
+    NSString *stopDate = [TLUtility getSearchStopDate];
     
     NSURL *url = [self getURLToGetEventsByLocationUsingCountryCode:@"USA" withState:state withCity:city eventDateAfter:startDate eventDateBefore:stopDate inPage:pageNo];
     

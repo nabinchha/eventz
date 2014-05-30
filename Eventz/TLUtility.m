@@ -51,7 +51,7 @@
     return dayOfWeek;
 }
 
-+(NSString*) getWeekendStartDate
++(NSString*) getSearchStartDate
 {
     NSString *startDate;
     
@@ -74,7 +74,7 @@
     return startDate;
 }
 
-+(NSString*) getWeekendStopDate
++(NSString*) getStopStopDate
 {
     NSString *stopDate;
     

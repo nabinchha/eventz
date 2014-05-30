@@ -100,6 +100,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C506922A19381CBB006B977C /* API Wrapper and Utility */ = {
+			isa = PBXGroup;
+			children = (
+				C50691F71938187A006B977C /* MBProgressHUD.h */,
+				C50691F81938187A006B977C /* MBProgressHUD.m */,
+				C50691F11938187A006B977C /* TLUtility.h */,
+				C50691F21938187A006B977C /* TLUtility.m */,
+				C50691EF1938187A006B977C /* TLAPIWrapper.h */,
+				C50691F01938187A006B977C /* TLAPIWrapper.m */,
+			);
+			name = "API Wrapper and Utility";
+			sourceTree = "<group>";
+		};
+		C506922B19381D33006B977C /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				C5069210193818E0006B977C /* Main.storyboard */,
+			);
+			name = Storyboard;
+			sourceTree = "<group>";
+		};
+		C506922C19381D48006B977C /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				C50692161938191F006B977C /* locationIcon.png */,
+				C50692171938191F006B977C /* Splash@2x copy.png */,
+				C50692181938191F006B977C /* Splash@2x.png */,
+				C50692191938191F006B977C /* Logo.png */,
+				C506921B1938191F006B977C /* listIcon@2x.png */,
+				C506921C1938191F006B977C /* mapIcon@2x.png */,
+			);
+			name = Graphics;
+			sourceTree = "<group>";
+		};
 		C5C32EDC192FEF8900111A6B = {
 			isa = PBXGroup;
 			children = (
@@ -134,7 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				C5069213193818F0006B977C /* Images.xcassets */,
-				C5069210193818E0006B977C /* Main.storyboard */,
+				C506922B19381D33006B977C /* Storyboard */,
 				C5C32F4119302DD800111A6B /* Classes */,
 				C5C32EEF192FEF8900111A6B /* Supporting Files */,
 			);
@@ -145,23 +179,20 @@
 		C5C32EEF192FEF8900111A6B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C506922C19381D48006B977C /* Graphics */,
 				C506922619381950006B977C /* InfoPlist.strings */,
 				C50692151938191F006B977C /* Eventz-Prefix.pch */,
-				C50692161938191F006B977C /* locationIcon.png */,
-				C50692171938191F006B977C /* Splash@2x copy.png */,
-				C50692181938191F006B977C /* Splash@2x.png */,
-				C50692191938191F006B977C /* Logo.png */,
 				C506921A1938191F006B977C /* Eventz-Info.plist */,
-				C506921B1938191F006B977C /* listIcon@2x.png */,
-				C506921C1938191F006B977C /* mapIcon@2x.png */,
 				C506921D1938191F006B977C /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		C5C32F30193019D900111A6B /* Controllers */ = {
+		C5C32F30193019D900111A6B /* Custom Views and Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C50691F51938187A006B977C /* TLTableViewCell.h */,
+				C50691F61938187A006B977C /* TLTableViewCell.m */,
 				C50691FE193818B4006B977C /* TLDetailViewController.h */,
 				C50691FF193818B4006B977C /* TLDetailViewController.m */,
 				C5069200193818B4006B977C /* TLEventTabController.h */,
@@ -175,7 +206,7 @@
 				C5069208193818B4006B977C /* TLWebViewController.h */,
 				C5069209193818B4006B977C /* TLWebViewController.m */,
 			);
-			name = Controllers;
+			name = "Custom Views and Controllers";
 			sourceTree = "<group>";
 		};
 		C5C32F31193019ED00111A6B /* Models */ = {
@@ -192,18 +223,11 @@
 		C5C32F4119302DD800111A6B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				C50691EF1938187A006B977C /* TLAPIWrapper.h */,
-				C50691F01938187A006B977C /* TLAPIWrapper.m */,
-				C50691F11938187A006B977C /* TLUtility.h */,
-				C50691F21938187A006B977C /* TLUtility.m */,
 				C50691F31938187A006B977C /* TLAppDelegate.h */,
 				C50691F41938187A006B977C /* TLAppDelegate.m */,
-				C50691F51938187A006B977C /* TLTableViewCell.h */,
-				C50691F61938187A006B977C /* TLTableViewCell.m */,
-				C50691F71938187A006B977C /* MBProgressHUD.h */,
-				C50691F81938187A006B977C /* MBProgressHUD.m */,
+				C506922A19381CBB006B977C /* API Wrapper and Utility */,
 				C5C32F31193019ED00111A6B /* Models */,
-				C5C32F30193019D900111A6B /* Controllers */,
+				C5C32F30193019D900111A6B /* Custom Views and Controllers */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
