@@ -212,8 +212,8 @@
 		C5C32F31193019ED00111A6B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C50691E919381843006B977C /* TLEventAnnotation.m */,
 				C50691EA19381843006B977C /* TLEventAnnotation.h */,
+				C50691E919381843006B977C /* TLEventAnnotation.m */,
 				C50691EB19381843006B977C /* TLEvent.h */,
 				C50691EC19381843006B977C /* TLEvent.m */,
 			);

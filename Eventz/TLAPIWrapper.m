@@ -14,6 +14,8 @@
 
 @implementation TLAPIWrapper
 
+#pragma mark - Private class methods
+
 +(NSString*) getURLBase
 {
     return @"http://public-api.ticketleap.com/";
@@ -58,6 +60,8 @@
     
     return urlData;
 }
+
+#pragma mark - Public class methods
 
 +(NSArray*) searchByLocationInState:(NSString*) state
                              inCity:(NSString*)city

@@ -24,6 +24,7 @@
 
 @implementation TLMapViewController
 
+#pragma mark - Properties
 @synthesize mapView = _mapView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

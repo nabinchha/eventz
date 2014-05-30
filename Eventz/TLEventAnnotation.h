@@ -21,11 +21,8 @@
 - (id)initWithLocation:(CLLocationCoordinate2D)coord;
 
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
-
 @property (nonatomic, copy) NSString* title;
-
 @property (nonatomic, copy) NSString* subtitle;
-
 @property (nonatomic, strong) TLEvent* eventDetails;
 
 @end

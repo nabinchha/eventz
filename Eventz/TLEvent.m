@@ -10,6 +10,7 @@
 
 @implementation TLEvent
 
+#pragma mark - Properties
 @synthesize name = _name;
 @synthesize description = _description;
 @synthesize organization_name = _organization_name;

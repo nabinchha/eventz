@@ -11,10 +11,9 @@
 
 @implementation TLTableViewCell
 
+#pragma mark - Properties
 @synthesize eventAddress = _eventAddress;
-
 @synthesize eventName = _eventName;
-
 @synthesize eventImage = _eventImage;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier

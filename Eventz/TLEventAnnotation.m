@@ -10,12 +10,10 @@
 
 @implementation TLEventAnnotation
 
+#pragma mark - Properties
 @synthesize title;
-
 @synthesize subtitle;
-
 @synthesize coordinate;
-
 @synthesize eventDetails;
 
 - (id)initWithLocation:(CLLocationCoordinate2D)coord

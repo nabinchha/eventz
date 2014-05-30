@@ -24,6 +24,7 @@
 
 @implementation TLEventTabController
 
+#pragma mark - Properties
 @synthesize city = _city;
 @synthesize state = _state;
 @synthesize country = _country;

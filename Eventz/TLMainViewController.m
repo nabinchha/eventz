@@ -28,6 +28,7 @@
     NSMutableArray *eventsFound;
 }
 
+#pragma mark - Properties
 @synthesize address = _address;
 @synthesize appVersion = _appVersion;
 @synthesize tagGestureRecognizer = _tagGestureRecognizer;

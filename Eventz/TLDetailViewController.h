@@ -13,13 +13,9 @@
 @interface TLDetailViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UILabel *eventName;
-
 @property (strong, nonatomic) IBOutlet UIImageView *eventImage;
-
 @property (strong, nonatomic) IBOutlet UITextView *eventInfo;
-
 @property (strong, nonatomic) TLEvent *eventOfInterest;
-
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end

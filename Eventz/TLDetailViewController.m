@@ -17,11 +17,11 @@
 
 @implementation TLDetailViewController
 
+#pragma mark - Properties
 @synthesize eventName = _eventName;
 @synthesize eventInfo =_eventInfo;
 @synthesize eventImage = _eventImage;
 @synthesize eventOfInterest = _eventOfInterest;
-
 @synthesize scrollView = _scrollView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

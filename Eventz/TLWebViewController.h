@@ -12,7 +12,6 @@
 @interface TLWebViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
-
 @property (strong, nonatomic) NSString *url;
 
 @end

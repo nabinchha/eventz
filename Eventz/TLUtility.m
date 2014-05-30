@@ -12,6 +12,8 @@
 
 @implementation TLUtility
 
+#pragma mark - Public class methods
+
 +(void) displayAlertWithMessage:(NSString*) mymessage andHeading:(NSString*) myheading
 {
     UIAlertView *msg = [[UIAlertView alloc] initWithTitle:myheading message:mymessage delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
@@ -74,7 +76,7 @@
     return startDate;
 }
 
-+(NSString*) getStopStopDate
++(NSString*) getSearchStopDate
 {
     NSString *stopDate;
     

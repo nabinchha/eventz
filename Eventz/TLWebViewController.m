@@ -15,8 +15,8 @@
 
 @implementation TLWebViewController
 
+#pragma mark - Properties
 @synthesize webView = _webView;
-
 @synthesize url = _url;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
