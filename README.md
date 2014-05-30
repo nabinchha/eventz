@@ -20,8 +20,10 @@ Visualize the events on a map. Select to know more about the events.
 
 
 See details of events.
+
 ![alt tag](photo4.PNG)
 
 
 Purchase tickets
+
 ![alt tag](photo5.PNG)
