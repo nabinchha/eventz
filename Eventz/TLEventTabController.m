@@ -15,8 +15,7 @@
 #import "TLUtility.h"
 #import "MBProgressHUD.h"
 
-@interface TLEventTabController ()
-{
+@interface TLEventTabController () {
     int pageNo;
 }
 
@@ -31,8 +30,7 @@
 @synthesize fullAddress = _fullAddress;
 @synthesize eventsFound = _eventsFound;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -40,8 +38,7 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     pageNo = 1;
@@ -50,43 +47,33 @@
     //[UIColor colorWithRed:238.0f/255.0f green:204.0f/255.0f blue:204.0f/255.0f alpha:1.0];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)moreResultsRequested:(id)sender
-{
+- (IBAction)moreResultsRequested:(id)sender {
     pageNo++;
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void)
-    {
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void) {
         // Do something...
         NSMutableArray *moreData = [TLAPIWrapper searchByLocationInState:_state inCity:_city inPageNo:pageNo];
         
-        if(moreData.count > 0)
-        {
-            for (TLEvent *e in moreData)
-            {
+        if(moreData.count > 0) {
+            for (TLEvent *e in moreData) {
                 [_eventsFound addObject:e];
             }
         
             UIViewController *vc = self.selectedViewController;
         
-            if([vc isKindOfClass:[TLListTableViewController class]])
-            {
+            if([vc isKindOfClass:[TLListTableViewController class]]) {
                 [((TLListTableViewController*)vc) reloadTableView];
-            }
-            else if([vc isKindOfClass:[TLMapViewController class]])
-            {
+            } else if([vc isKindOfClass:[TLMapViewController class]]) {
                 [((TLMapViewController*)vc) loadAnnotations];
             }
-        }
-        else
-        {
+        } else {
             [TLUtility displayAlertWithMessage: [NSString stringWithFormat:@"There are no more events happening between %@ and %@", [TLUtility getSearchStartDate], [TLUtility getSearchStopDate]]  andHeading:@"Sorry, we're out of events!"];
         }
         

@@ -14,14 +14,12 @@
 
 #pragma mark - Public class methods
 
-+(void) displayAlertWithMessage:(NSString*) mymessage andHeading:(NSString*) myheading
-{
++ (void)displayAlertWithMessage:(NSString *)mymessage andHeading:(NSString *)myheading {
     UIAlertView *msg = [[UIAlertView alloc] initWithTitle:myheading message:mymessage delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
     [msg show];
 }
 
-+(NSString*) convertDateToString:(NSDate*) date
-{
++ (NSString *)convertDateToString:(NSDate *)date {
     NSString *myDate = @"";
     
     NSDateFormatter *myFormatter = [[NSDateFormatter alloc] init];
@@ -31,21 +29,18 @@
     return myDate;
 }
 
-+(UIImage*) getImageFromURL:(NSString*)imageURL
-{
-    if(![imageURL isKindOfClass:[NSNull class]] && imageURL != nil)
-    {
++ (UIImage *)getImageFromURL:(NSString *)imageURL {
+    if(![imageURL isKindOfClass:[NSNull class]] && imageURL != nil) {
         NSURL *imgUrl = [[NSURL alloc] initWithString:imageURL];
         NSData *imgData = [[NSData alloc] initWithContentsOfURL:imgUrl];
         UIImage *img = [[UIImage alloc] initWithData:imgData];
         return img;
-    }
-    else
+    } else {
         return [UIImage imageNamed:@"Logo.png"];
+    }
 }
 
-+(NSString*) getDayOfTheWeek
-{
++ (NSString *)getDayOfTheWeek {
     NSDate *currDate = [NSDate date];
     NSDateFormatter *myFormatter = [[NSDateFormatter alloc] init];
     [myFormatter setDateFormat:@"c"];
@@ -53,8 +48,7 @@
     return dayOfWeek;
 }
 
-+(NSString*) getSearchStartDate
-{
++ (NSString *)getSearchStartDate {
     NSString *startDate;
     
     NSDate *currDate = [NSDate date];
@@ -76,8 +70,7 @@
     return startDate;
 }
 
-+(NSString*) getSearchStopDate
-{
++ (NSString *)getSearchStopDate {
     NSString *stopDate;
     
     NSDate *currDate = [NSDate date];
@@ -99,13 +92,11 @@
     return stopDate;
 }
 
-+ (NSMutableArray *) getEventsFromJSON:(NSData *)objectNotation
-{
++ (NSMutableArray *)getEventsFromJSON:(NSData *)objectNotation {
     NSError *localError = nil;
     NSDictionary *parsedObject = [NSJSONSerialization JSONObjectWithData:objectNotation options:0 error:&localError];
     
-    if (localError != nil)
-    {
+    if (localError != nil) {
         return nil;
     }
     
@@ -113,14 +104,11 @@
     
     NSArray *myevents = [parsedObject valueForKey:@"events"];
     
-    for (NSDictionary *groupDic in myevents)
-    {
+    for (NSDictionary *groupDic in myevents) {
         TLEvent *event = [[TLEvent alloc] init];
         
-        for (NSString *key in groupDic)
-        {
-            if ([event respondsToSelector:NSSelectorFromString(key)])
-            {
+        for (NSString *key in groupDic) {
+            if ([event respondsToSelector:NSSelectorFromString(key)]) {
                 [event setValue:[groupDic valueForKey:key] forKey:key];
             }
         }

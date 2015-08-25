@@ -11,18 +11,12 @@
 
 @interface TLUtility : NSObject
 
-+(void) displayAlertWithMessage:(NSString*) mymessage andHeading:(NSString*) myheading;
-
-+(NSString*) convertDateToString:(NSDate*) date;
-
-+(UIImage*) getImageFromURL:(NSString*)imageURL;
-
-+(NSString*) getDayOfTheWeek;
-
-+(NSString*) getSearchStartDate;
-
-+(NSString*) getSearchStopDate;
-
-+(NSMutableArray *) getEventsFromJSON:(NSData *)objectNotation;
++ (void)displayAlertWithMessage:(NSString *)mymessage andHeading:(NSString *)myheading;
++ (NSString *)convertDateToString:(NSDate *)date;
++ (UIImage *)getImageFromURL:(NSString *)imageURL;
++ (NSString *)getDayOfTheWeek;
++ (NSString *)getSearchStartDate;
++ (NSString *)getSearchStopDate;
++ (NSMutableArray *)getEventsFromJSON:(NSData *)objectNotation;
 
 @end

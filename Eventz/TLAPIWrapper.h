@@ -11,8 +11,8 @@
 
 @interface TLAPIWrapper : NSObject
 
-+(NSMutableArray*) searchByLocationInState:(NSString*) state
-                             inCity:(NSString*)city
-                           inPageNo:(int)pageNo;
++ (NSMutableArray*)searchByLocationInState:(NSString*)state
+                                    inCity:(NSString*)city
+                                  inPageNo:(int)pageNo;
 
 @end

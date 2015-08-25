@@ -15,11 +15,9 @@
 #import "TLDetailViewController.h"
 #import "MBProgressHUD.h"
 
-@interface TLMapViewController ()
-{
+@interface TLMapViewController () {
     TLEvent *eventOfInterestForDetailView;
 }
-
 @end
 
 @implementation TLMapViewController
@@ -27,8 +25,7 @@
 #pragma mark - Properties
 @synthesize mapView = _mapView;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -36,42 +33,32 @@
     return self;
 }
 
--(NSMutableArray*) getEvents
-{
+- (NSMutableArray *)getEvents {
     TLEventTabController *parent = (TLEventTabController*)[self parentViewController];
     return parent.eventsFound;
 }
 
-- (void) loadMoreEvents
-{
-    
+- (void)loadMoreEvents {
 }
 
--(void) loadAnnotations
-{
+- (void)loadAnnotations {
     //events = ((TLEventTabController*)[self parentViewController]).eventsFound;
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void)
-    {
-        // Do something...
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void) {
         [self addEvents];
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     });
 }
 
--(void) addEvents
-{
-    for(TLEvent *event in [self getEvents])
-    {
+- (void)addEvents {
+    for(TLEvent *event in [self getEvents]) {
         NSString *location = [NSString stringWithFormat:@"%@, %@, %@ %@", event.venue_street, event.venue_city, event.venue_region_name, event.venue_postal_code];
         CLGeocoder *geocoder = [[CLGeocoder alloc] init];
         [geocoder geocodeAddressString:location
-                     completionHandler:^(NSArray* placemarks, NSError* error)
-        {
-            if (placemarks && placemarks.count > 0)
-            {
+                     completionHandler:^(NSArray* placemarks, NSError* error) {
+            if (placemarks && placemarks.count > 0) {
                 CLPlacemark *topResult = [placemarks objectAtIndex:0];
                 
                 // Add an annotation
@@ -86,13 +73,11 @@
                 MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(topResult.location.coordinate, 11000, 11000);
                 [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
             }
-        }
-        ];
+        }];
     }
 }
 
-- (MKAnnotationView *)mapView:(MKMapView *)theMapView viewForAnnotation:(id <MKAnnotation>)annotation
-{
+- (MKAnnotationView *)mapView:(MKMapView *)theMapView viewForAnnotation:(id <MKAnnotation>)annotation {
     //TLEventAnnotation *ann = (TLEventAnnotation*) annotation;
     
     // Try to dequeue an existing pin view first (code not shown).
@@ -120,22 +105,19 @@
     return customPinView;
 }
 
-- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
-{
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
     eventOfInterestForDetailView = ((TLEventAnnotation*)view.annotation).eventDetails;
     NSLog(@"you touched the disclosure indicator");
     
     [self eventDetailDemanded];
 }
 
--(void) eventDetailDemanded
-{
+- (void)eventDetailDemanded {
     [self performSegueWithIdentifier:@"detailViewDemanded" sender:self];
 }
 
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     // Do any additional setup after loading the view.
@@ -143,29 +125,24 @@
     //self.mapView.showsUserLocation = YES;
 }
 
--(void) viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
     [self loadAnnotations];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
-{
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 800, 800);
     [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
 }
 
 
 #pragma mark - Navigation
-
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     
@@ -179,6 +156,5 @@
         vc.eventOfInterest = eventOfInterestForDetailView;
     }
 }
-
 
 @end

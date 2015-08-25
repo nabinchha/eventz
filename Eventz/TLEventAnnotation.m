@@ -11,16 +11,15 @@
 @implementation TLEventAnnotation
 
 #pragma mark - Properties
+
 @synthesize title;
 @synthesize subtitle;
 @synthesize coordinate;
 @synthesize eventDetails;
 
-- (id)initWithLocation:(CLLocationCoordinate2D)coord
-{
+- (instancetype)initWithLocation:(CLLocationCoordinate2D)coord {
     self = [super init];
-    if (self)
-    {
+    if (self) {
         coordinate = coord;
     }
     return self;

@@ -17,8 +17,7 @@
 
 @end
 
-@implementation TLMainViewController
-{
+@implementation TLMainViewController {
     CLLocationManager *locationManager;
     CLGeocoder *geocoder;
     CLPlacemark *placemark;
@@ -33,8 +32,7 @@
 @synthesize appVersion = _appVersion;
 @synthesize tagGestureRecognizer = _tagGestureRecognizer;
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
@@ -55,13 +53,11 @@
     [self startLocationServices];
 }
 
--(void) viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
     [[self navigationController] setNavigationBarHidden:YES animated:YES];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -69,72 +65,59 @@
 /*
  Method invoked on touch to hide the keyboard
  */
--(void) dismissKeyboard
-{
+- (void)dismissKeyboard {
     [_address resignFirstResponder];
 }
 
 
--(void) startLocationServices
-{
+- (void)startLocationServices {
     locationManager.delegate = self;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     
     [locationManager startUpdatingLocation];
 }
 
-- (IBAction)searchClicked:(id)sender
-{
-    if(![state isEqualToString:@""] && ![city isEqualToString:@""])
-    {
+- (IBAction)searchClicked:(id)sender {
+    if(![state isEqualToString:@""] && ![city isEqualToString:@""]) {
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
-        dispatch_after(popTime, dispatch_get_main_queue(), ^(void)
-        {
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void) {
             // Do something...
             NSArray *items = [[self address].text componentsSeparatedByString:@","];
             
-            if(items.count == 2)
-            {
+            if(items.count == 2) {
                 city = [items[0] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
                 state = [items[1] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
                 
                 eventsFound = [TLAPIWrapper searchByLocationInState:state inCity:city inPageNo:1];
                 
                 
-                if(eventsFound.count > 0)
+                if(eventsFound.count > 0) {
                     [self performSegueWithIdentifier:@"validSearchInitiated" sender:self];
-                else
+                } else {
                     [TLUtility displayAlertWithMessage:@"There were no events for the location provided." andHeading:@"No Events Found!"];
-            }
-            else
-            {
+                }
+            } else {
                 [TLUtility displayAlertWithMessage:@"Location must be provided in the format '[City], [State]'" andHeading:@"Invalid input format."];
             }
             [MBProgressHUD hideHUDForView:self.view animated:YES];
 
         });
-    }
-    else
-    {
+    } else {
         [TLUtility displayAlertWithMessage:@"Location must be provided." andHeading:@"Could not determine your search location..."];
     }
 }
 
-- (IBAction)logoClicked:(id)sender
-{
+- (IBAction)logoClicked:(id)sender {
     [TLUtility displayAlertWithMessage:[NSString stringWithFormat:@"Enter city and state or use your current location to find ticketleap events happening in the next three weeks (between %@ and %@). Have fun!\n- NM", [TLUtility getSearchStartDate], [TLUtility getSearchStopDate]] andHeading:@"About"];
 }
 
-- (IBAction)locationServicesRequested:(id)sender
-{
+- (IBAction)locationServicesRequested:(id)sender {
     [self startLocationServices];
 }
 
 #pragma mark - CLLocationManagerDelegate
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
-{
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
     NSLog(@"didUpdateToLocation: %@", newLocation);
     CLLocation *currentLocation = newLocation;
     
@@ -143,11 +126,9 @@
     
     // Reverse Geocoding
     NSLog(@"Resolving the Address");
-    [geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error)
-    {
+    [geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
         NSLog(@"Found placemarks: %@, error: %@", placemarks, error);
-        if (error == nil && [placemarks count] > 0)
-        {
+        if (error == nil && [placemarks count] > 0) {
             placemark = [placemarks lastObject];
             fullAddress = [NSString stringWithFormat:@"%@ %@\n%@ %@\n%@\n%@",
                            placemark.subThoroughfare, placemark.thoroughfare,
@@ -158,9 +139,7 @@
             state = placemark.administrativeArea;
             city = placemark.locality;
             _address.text = [NSString stringWithFormat:@"%@, %@", city, state];
-        }
-        else
-        {
+        } else {
             _address.text = [NSString stringWithFormat:@"%@, %@", @"City", @"State"];
             NSLog(@"%@", error.debugDescription);
         }
@@ -169,11 +148,8 @@
 }
 
 #pragma mark - before segue is executed
-
--(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([[segue identifier] isEqualToString:@"validSearchInitiated"])
-    {
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"validSearchInitiated"]) {
         // Get reference to the tab view controller
         TLEventTabController *tvc = [segue destinationViewController];
         

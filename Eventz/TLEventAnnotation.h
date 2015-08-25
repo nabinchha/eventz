@@ -11,14 +11,13 @@
 #import <CoreLocation/CoreLocation.h>
 #import "TLEvent.h"
 
-@interface TLEventAnnotation : NSObject<MKAnnotation>
-{
+@interface TLEventAnnotation : NSObject<MKAnnotation> {
     CLLocationCoordinate2D coordinate;
     NSString *title;
     NSString *subtitle;
 }
 
-- (id)initWithLocation:(CLLocationCoordinate2D)coord;
+- (instancetype)initWithLocation:(CLLocationCoordinate2D)coord;
 
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 @property (nonatomic, copy) NSString* title;

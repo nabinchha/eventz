@@ -10,31 +10,31 @@
 	<string>Eventz</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>D21E8DD9-2D51-4561-9D93-E5A85AB74846</key>
-		<string>https://github.com/nabinchha/Eventz.git</string>
+		<key>642FB280A5EF2AFBC43AD9A84783B71D9F5E97E9</key>
+		<string>https://github.com/nabinchha/eventz.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Eventz.xcodeproj/project.xcworkspace</string>
+	<string>Eventz.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>D21E8DD9-2D51-4561-9D93-E5A85AB74846</key>
+		<key>642FB280A5EF2AFBC43AD9A84783B71D9F5E97E9</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/nabinchha/Eventz.git</string>
+	<string>https://github.com/nabinchha/eventz.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>D21E8DD9-2D51-4561-9D93-E5A85AB74846</string>
+	<string>642FB280A5EF2AFBC43AD9A84783B71D9F5E97E9</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>D21E8DD9-2D51-4561-9D93-E5A85AB74846</string>
+			<string>642FB280A5EF2AFBC43AD9A84783B71D9F5E97E9</string>
 			<key>IDESourceControlWCCName</key>
-			<string>Eventz</string>
+			<string>eventz</string>
 		</dict>
 	</array>
 </dict>

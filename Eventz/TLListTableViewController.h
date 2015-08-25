@@ -11,6 +11,6 @@
 
 @interface TLListTableViewController : UITableViewController
 
-- (void) reloadTableView;
+- (void)reloadTableView;
 
 @end

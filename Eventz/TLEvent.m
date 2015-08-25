@@ -42,13 +42,9 @@
 
 @synthesize imageCache = _imageCache;
 
--(id) init
-{
+- (instancetype)init {
     self = [super init];
-    if(self)
-    {
-
-    }
+    if(self) { }
     return self;
 }
 

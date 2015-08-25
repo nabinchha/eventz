@@ -12,9 +12,7 @@
 @interface TLTableViewCell : UITableViewCell
 
 @property (strong, nonatomic) IBOutlet UILabel *eventName;
-
 @property (strong, nonatomic) IBOutlet UILabel *eventAddress;
-
 @property (strong, nonatomic) IBOutlet UIImageView *eventImage;
 
 @end

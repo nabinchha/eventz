@@ -16,23 +16,21 @@
 
 #pragma mark - Private class methods
 
-+(NSString*) getURLBase
-{
++ (NSString *)getURLBase {
     return @"http://public-api.ticketleap.com/";
 }
 
-+(NSString*) getAPIKey
-{
++ (NSString*)getAPIKey {
     return @"7238517239089673";
 }
 
-+(NSURL*) getURLToGetEventsByLocationUsingCountryCode:(NSString*)countryCode
-                                            withState:(NSString*)state
-                                             withCity:(NSString*)city
-                                       eventDateAfter:(NSString*) dateAfter
-                                      eventDateBefore:(NSString*) dateBefore
-                                               inPage:(int) pageNo
-{
++ (NSURL *)getURLToGetEventsByLocationUsingCountryCode:(NSString *)countryCode
+                                            withState:(NSString *)state
+                                             withCity:(NSString *)city
+                                       eventDateAfter:(NSString *)dateAfter
+                                      eventDateBefore:(NSString *)dateBefore
+                                               inPage:(int) pageNo {
+    
     NSString *myRelativeUrl = [NSString stringWithFormat:@"events/by/location/%@/%@/%@?key=%@&dates_after=%@&dates_before=%@&page_num=%i&page_size=20", countryCode, state, city, [self getAPIKey], dateAfter, dateBefore, pageNo];
     myRelativeUrl = [myRelativeUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
@@ -43,8 +41,7 @@
     return absURL;
 }
 
-+(NSData*) executeRequestWithURL:(NSURL*) url
-{
++ (NSData *)executeRequestWithURL:(NSURL *)url {
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url
                                                 cachePolicy:NSURLRequestReturnCacheDataElseLoad
                                             timeoutInterval:30];
@@ -63,10 +60,9 @@
 
 #pragma mark - Public class methods
 
-+(NSArray*) searchByLocationInState:(NSString*) state
-                             inCity:(NSString*)city
-                           inPageNo:(int)pageNo
-{
++ (NSArray *)searchByLocationInState:(NSString *)state
+                              inCity:(NSString *)city
+                            inPageNo:(int)pageNo {
     NSString *startDate = [TLUtility getSearchStartDate];
     NSString *stopDate = [TLUtility getSearchStopDate];
     

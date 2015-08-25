@@ -14,6 +14,6 @@
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 
--(void) loadAnnotations;
+- (void)loadAnnotations;
 
 @end
