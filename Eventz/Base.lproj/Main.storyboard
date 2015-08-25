@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Ou5-Zy-nHx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Ou5-Zy-nHx">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment version="2048" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
-        <!--List Table View Controller - List-->
+        <!--List-->
         <scene sceneID="d1v-Qp-vj0">
             <objects>
                 <tableViewController id="rVo-kG-jAQ" customClass="TLListTableViewController" sceneMemberID="viewController">
@@ -127,7 +128,7 @@
             </objects>
             <point key="canvasLocation" x="1677" y="425"/>
         </scene>
-        <!--Web View Controller - Purchase Tickets-->
+        <!--Purchase Tickets-->
         <scene sceneID="7dQ-rD-ok6">
             <objects>
                 <viewController id="xK4-K3-huB" customClass="TLWebViewController" sceneMemberID="viewController">
@@ -243,7 +244,7 @@
             </objects>
             <point key="canvasLocation" x="188" y="446"/>
         </scene>
-        <!--Event Tab Controller - Eventz-->
+        <!--Eventz-->
         <scene sceneID="jWL-ri-aDQ">
             <objects>
                 <tabBarController definesPresentationContext="YES" id="Lcj-jS-bHG" customClass="TLEventTabController" sceneMemberID="viewController">
@@ -272,7 +273,7 @@
             </objects>
             <point key="canvasLocation" x="633" y="446"/>
         </scene>
-        <!--Map View Controller - Map-->
+        <!--Map-->
         <scene sceneID="Zhw-3y-8Av">
             <objects>
                 <viewController id="GpQ-rF-yCj" customClass="TLMapViewController" sceneMemberID="viewController">
@@ -324,7 +325,6 @@
         <image name="locationIcon.png" width="94" height="128"/>
         <image name="mapIcon.png" width="30" height="30"/>
     </resources>
-    <color key="tintColor" red="0.87843143940000001" green="0.1960784495" blue="0.41960787770000002" alpha="1" colorSpace="deviceRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
@@ -333,4 +333,5 @@
     <inferredMetricsTieBreakers>
         <segue reference="cjr-g2-qL9"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" red="0.87843143940000001" green="0.1960784495" blue="0.41960787770000002" alpha="1" colorSpace="deviceRGB"/>
 </document>

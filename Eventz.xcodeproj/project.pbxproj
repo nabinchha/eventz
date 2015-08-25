@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		74BF43821B8C1780003A0640 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5069210193818E0006B977C /* Main.storyboard */; };
 		C50691ED19381843006B977C /* TLEventAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = C50691E919381843006B977C /* TLEventAnnotation.m */; };
 		C50691EE19381843006B977C /* TLEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = C50691EC19381843006B977C /* TLEvent.m */; };
 		C50691F91938187A006B977C /* TLAPIWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = C50691F01938187A006B977C /* TLAPIWrapper.m */; };
@@ -296,6 +297,7 @@
 				C5069214193818F0006B977C /* Images.xcassets in Resources */,
 				C506921E1938191F006B977C /* locationIcon.png in Resources */,
 				C506921F1938191F006B977C /* Splash@2x copy.png in Resources */,
+				74BF43821B8C1780003A0640 /* Main.storyboard in Resources */,
 				C50692231938191F006B977C /* listIcon@2x.png in Resources */,
 				C506922819381950006B977C /* InfoPlist.strings in Resources */,
 			);
