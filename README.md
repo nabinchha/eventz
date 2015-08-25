@@ -1,7 +1,7 @@
-Eventz by Nabin
+Eventz
 ======
 
-iPhone app that uses TicketLeap's public REST API. The app provides an easy way to look for events around you. The current version displays events that are happening in the next three weeks.
+This is an iPhone app that uses TicketLeap's public REST API. The app provides an easy way to look for events around you. The current version displays events that are happening in the next three weeks.
 
 
 Use your current location or enter city and state to begin search.
